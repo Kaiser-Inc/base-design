@@ -60,3 +60,27 @@ describe("Select", () => {
     expect(trigger.querySelector("svg")).toHaveAttribute("stroke-width", "1.75")
   })
 })
+
+describe("Select value label", () => {
+  it("shows the item label in the trigger when the items map is given", () => {
+    render(
+      <Select
+        defaultValue="paused"
+        items={[
+          { value: "active", label: "Ativo" },
+          { value: "paused", label: "Pausado" },
+        ]}
+      >
+        <SelectTrigger aria-label="Status do projeto">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+          <SelectItem value="paused">Pausado</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    expect(screen.getByRole("combobox", { name: "Status do projeto" })).toHaveTextContent("Pausado")
+    expect(screen.getByRole("combobox", { name: "Status do projeto" })).not.toHaveTextContent("paused")
+  })
+})

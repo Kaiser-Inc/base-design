@@ -25,6 +25,13 @@ import { Textarea } from "@/components/ui/textarea"
 
 const forcedFocus = "outline-2 outline-offset-2 outline-ring"
 
+// Base UI renders the item label in SelectValue only when it gets the items map.
+const statusItems = [
+  { value: "active", label: "Ativo" },
+  { value: "paused", label: "Pausado" },
+  { value: "archived", label: "Arquivado" },
+]
+
 function FormDemos() {
   return (
     <>
@@ -223,7 +230,7 @@ function FormDemos() {
         registryName="select"
       >
         <ShowcaseRow label="Padrão">
-          <Select defaultValue="active">
+          <Select items={statusItems} defaultValue="active">
             <SelectTrigger aria-label="Status do projeto" className="w-56">
               <SelectValue />
             </SelectTrigger>
@@ -235,7 +242,7 @@ function FormDemos() {
           </Select>
         </ShowcaseRow>
         <ShowcaseRow label="Foco">
-          <Select defaultValue="paused">
+          <Select items={statusItems} defaultValue="paused">
             <SelectTrigger
               aria-label="Status em foco"
               className={`w-56 ${forcedFocus}`}
@@ -249,7 +256,7 @@ function FormDemos() {
           </Select>
         </ShowcaseRow>
         <ShowcaseRow label="Erro">
-          <Select>
+          <Select items={statusItems}>
             <SelectTrigger
               aria-label="Status inválido"
               aria-invalid="true"
@@ -264,7 +271,7 @@ function FormDemos() {
           </Select>
         </ShowcaseRow>
         <ShowcaseRow label="Desabilitado">
-          <Select defaultValue="archived" disabled>
+          <Select items={statusItems} defaultValue="archived" disabled>
             <SelectTrigger aria-label="Status desabilitado" className="w-56">
               <SelectValue />
             </SelectTrigger>

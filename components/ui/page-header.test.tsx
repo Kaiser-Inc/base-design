@@ -26,4 +26,10 @@ describe("PageHeader", () => {
     const { container } = render(<PageHeader title="Projetos" />)
     expect(container.querySelector("[data-slot=page-header-description]")).toBeNull()
   })
+
+  it("renders a level-2 heading when nested in another page", () => {
+    render(<PageHeader title="Projetos" headingLevel={2} />)
+    expect(screen.queryByRole("heading", { level: 1 })).toBeNull()
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Projetos")
+  })
 })

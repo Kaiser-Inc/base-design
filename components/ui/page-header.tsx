@@ -6,13 +6,17 @@ function PageHeader({
   title,
   description,
   actions,
+  headingLevel = 1,
   className,
   ...props
 }: Omit<React.ComponentProps<"header">, "title"> & {
   title: React.ReactNode
   description?: React.ReactNode
   actions?: React.ReactNode
+  /** Use 2 when the header sits inside another page, so the page keeps one h1. */
+  headingLevel?: 1 | 2
 }) {
+  const Heading = headingLevel === 1 ? "h1" : "h2"
   return (
     <header
       data-slot="page-header"
@@ -20,9 +24,9 @@ function PageHeader({
       {...props}
     >
       <div className="flex min-w-0 flex-col gap-2">
-        <h1 className="text-[28px] leading-8 font-semibold tracking-[-0.03em] text-balance sm:text-[40px] sm:leading-[44px]">
+        <Heading className="text-[28px] leading-8 font-semibold tracking-[-0.03em] text-balance sm:text-[40px] sm:leading-[44px]">
           {title}
-        </h1>
+        </Heading>
         {description && (
           <p data-slot="page-header-description" className="max-w-prose text-sm text-muted-foreground">
             {description}

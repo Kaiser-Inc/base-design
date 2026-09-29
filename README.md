@@ -55,6 +55,8 @@ The project needs shadcn set up (`pnpm dlx shadcn@latest init`) and Tailwind v4.
 | Feedback | `confirm-dialog`, `alert-dialog`, `sonner`, `skeleton`, `spinner`, `empty` |
 | Data and layout | `table`, `badge`, `tabs`, `page-header` |
 
+`Select` shows the chosen item label only when the root gets the `items` map (`<Select items={[{ value, label }]}>`); without it the trigger shows the raw value. This is Base UI behavior.
+
 Default component copy is Brazilian Portuguese ("Cancelar", "Carregando") and every string can be overridden through props.
 
 ## Rules the components follow

@@ -10,6 +10,7 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from "@/components/ui/empty"
+import { PageHeader } from "@/components/ui/page-header"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
   Table,
@@ -271,6 +272,26 @@ function DataDemos() {
               2 convidados.
             </TabsContent>
           </Tabs>
+        </ShowcaseRow>
+      </Showcase>
+
+      <Showcase
+        id="page-header"
+        title="PageHeader"
+        description="Nome da página como o maior texto da tela, com descrição opcional e a ação principal à direita. O título desta página é um PageHeader; os exemplos abaixo usam headingLevel={2} para não repetir o h1."
+        registryName="page-header"
+      >
+        <ShowcaseRow label="Com descrição e ação">
+          <PageHeader
+            className="w-full"
+            headingLevel={2}
+            title="Projetos"
+            description="Todos os produtos da KaiserInc em um lugar."
+            actions={<Button>Criar projeto</Button>}
+          />
+        </ShowcaseRow>
+        <ShowcaseRow label="Só o título">
+          <PageHeader headingLevel={2} title="Relatórios" />
         </ShowcaseRow>
       </Showcase>
     </>
