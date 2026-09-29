@@ -1,0 +1,541 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "kaiserinc",
+  "homepage": "https://github.com/Kaiser-Inc/base-design",
+  "items": [
+    {
+      "name": "base",
+      "type": "registry:item",
+      "title": "KaiserInc Base",
+      "description": "Tokens (violet 293 on zinc 286, no pure white or black), 32px controls, 6px radius and a dark-first ThemeProvider. Every other item depends on it.",
+      "dependencies": [
+        "cn",
+        "next-themes",
+        "lucide-react",
+        "class-variance-authority",
+        "tw-animate-css",
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "components/theme-provider.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "color-card": "var(--card)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-popover": "var(--popover)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-primary": "var(--primary)",
+          "color-primary-hover": "var(--primary-hover)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-primary-text": "var(--primary-text)",
+          "color-secondary": "var(--secondary)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-muted": "var(--muted)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-subtle-foreground": "var(--subtle-foreground)",
+          "color-accent": "var(--accent)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-destructive": "var(--destructive)",
+          "color-success": "var(--success)",
+          "color-warning": "var(--warning)",
+          "color-border": "var(--border)",
+          "color-border-strong": "var(--border-strong)",
+          "color-input": "var(--input)",
+          "color-ring": "var(--ring)",
+          "color-chart-1": "var(--chart-1)",
+          "color-chart-2": "var(--chart-2)",
+          "color-chart-3": "var(--chart-3)",
+          "color-chart-4": "var(--chart-4)",
+          "color-chart-5": "var(--chart-5)",
+          "color-sidebar": "var(--sidebar)",
+          "color-sidebar-foreground": "var(--sidebar-foreground)",
+          "color-sidebar-primary": "var(--sidebar-primary)",
+          "color-sidebar-primary-foreground": "var(--sidebar-primary-foreground)",
+          "color-sidebar-accent": "var(--sidebar-accent)",
+          "color-sidebar-accent-foreground": "var(--sidebar-accent-foreground)",
+          "color-sidebar-border": "var(--sidebar-border)",
+          "color-sidebar-ring": "var(--sidebar-ring)",
+          "font-heading": "var(--font-sans)",
+          "radius-sm": "4px",
+          "radius-md": "6px",
+          "radius-lg": "8px",
+          "radius-xl": "8px",
+          "radius-2xl": "8px",
+          "radius-3xl": "8px",
+          "radius-4xl": "8px",
+          "spacing-control": "32px",
+          "spacing-control-sm": "28px",
+          "container-page": "1600px"
+        },
+        "light": {
+          "background": "oklch(0.978 0.004 286)",
+          "foreground": "oklch(0.21 0.006 285.885)",
+          "card": "oklch(0.978 0.004 286)",
+          "card-foreground": "oklch(0.21 0.006 285.885)",
+          "popover": "oklch(0.99 0.002 286)",
+          "popover-foreground": "oklch(0.21 0.006 285.885)",
+          "primary": "oklch(0.5 0.17 293)",
+          "primary-hover": "oklch(0.45 0.16 293)",
+          "primary-foreground": "oklch(0.975 0.01 293)",
+          "primary-text": "oklch(0.5 0.17 293)",
+          "secondary": "oklch(0.94 0.006 286)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.955 0.005 286)",
+          "muted-foreground": "oklch(0.5 0.016 286)",
+          "subtle-foreground": "oklch(0.53 0.016 286)",
+          "accent": "oklch(0.94 0.006 286)",
+          "accent-foreground": "oklch(0.21 0.006 285.885)",
+          "destructive": "oklch(0.53 0.15 25)",
+          "success": "oklch(0.5 0.1 150)",
+          "warning": "oklch(0.53 0.11 75)",
+          "border": "oklch(0.915 0.005 286)",
+          "border-strong": "oklch(0.86 0.008 286)",
+          "input": "oklch(0.86 0.008 286)",
+          "ring": "oklch(0.5 0.17 293)",
+          "chart-1": "oklch(0.785 0.1 274.713)",
+          "chart-2": "oklch(0.585 0.16 277.117)",
+          "chart-3": "oklch(0.511 0.17 276.966)",
+          "chart-4": "oklch(0.457 0.16 277.023)",
+          "chart-5": "oklch(0.398 0.13 277.366)",
+          "sidebar": "oklch(0.978 0.004 286)",
+          "sidebar-foreground": "oklch(0.21 0.006 285.885)",
+          "sidebar-primary": "oklch(0.5 0.17 293)",
+          "sidebar-primary-foreground": "oklch(0.975 0.01 293)",
+          "sidebar-accent": "oklch(0.94 0.006 286)",
+          "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)",
+          "sidebar-border": "oklch(0.915 0.005 286)",
+          "sidebar-ring": "oklch(0.5 0.17 293)",
+          "shadow-overlay": "0 8px 24px rgb(0 0 0 / 0.08)",
+          "radius": "0.375rem"
+        },
+        "dark": {
+          "background": "oklch(0.19 0.006 286)",
+          "foreground": "oklch(0.93 0.004 286)",
+          "card": "oklch(0.19 0.006 286)",
+          "card-foreground": "oklch(0.93 0.004 286)",
+          "popover": "oklch(0.23 0.007 286)",
+          "popover-foreground": "oklch(0.93 0.004 286)",
+          "primary": "oklch(0.5 0.17 293)",
+          "primary-hover": "oklch(0.55 0.17 293)",
+          "primary-foreground": "oklch(0.975 0.01 293)",
+          "primary-text": "oklch(0.74 0.12 293)",
+          "secondary": "oklch(0.26 0.008 286)",
+          "secondary-foreground": "oklch(0.93 0.004 286)",
+          "muted": "oklch(0.23 0.007 286)",
+          "muted-foreground": "oklch(0.72 0.012 286)",
+          "subtle-foreground": "oklch(0.65 0.012 286)",
+          "accent": "oklch(0.26 0.008 286)",
+          "accent-foreground": "oklch(0.93 0.004 286)",
+          "destructive": "oklch(0.72 0.12 25)",
+          "success": "oklch(0.75 0.1 150)",
+          "warning": "oklch(0.78 0.1 80)",
+          "border": "oklch(0.28 0.007 286)",
+          "border-strong": "oklch(0.35 0.009 286)",
+          "input": "oklch(0.35 0.009 286)",
+          "ring": "oklch(0.74 0.12 293)",
+          "chart-1": "oklch(0.785 0.1 274.713)",
+          "chart-2": "oklch(0.585 0.16 277.117)",
+          "chart-3": "oklch(0.511 0.17 276.966)",
+          "chart-4": "oklch(0.457 0.16 277.023)",
+          "chart-5": "oklch(0.398 0.13 277.366)",
+          "sidebar": "oklch(0.19 0.006 286)",
+          "sidebar-foreground": "oklch(0.93 0.004 286)",
+          "sidebar-primary": "oklch(0.5 0.17 293)",
+          "sidebar-primary-foreground": "oklch(0.975 0.01 293)",
+          "sidebar-accent": "oklch(0.26 0.008 286)",
+          "sidebar-accent-foreground": "oklch(0.93 0.004 286)",
+          "sidebar-border": "oklch(0.28 0.007 286)",
+          "sidebar-ring": "oklch(0.74 0.12 293)",
+          "shadow-overlay": "none"
+        }
+      },
+      "css": {
+        "@layer base": {
+          "button:not(:disabled), [role=\"button\"]:not(:disabled)": {
+            "cursor": "pointer"
+          }
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          "*, *::before, *::after": {
+            "animation-duration": "1ms !important",
+            "transition-duration": "1ms !important"
+          }
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "32px button with loading state; 28px dense size for tables.",
+      "dependencies": [
+        "cn",
+        "class-variance-authority",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base",
+        "@kaiserinc/spinner"
+      ],
+      "files": [
+        {
+          "path": "components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Accessible loading indicator, labelled \"Carregando\" by default.",
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Form label.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Thin divider.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, description and error wired to the control through ARIA.",
+      "dependencies": [
+        "cn",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base",
+        "@kaiserinc/label",
+        "@kaiserinc/separator"
+      ],
+      "files": [
+        {
+          "path": "components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Filled 32px input.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Filled textarea, 88px minimum height.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Filled 32px select with a system menu, never the native element.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox filled with the primary violet when checked.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "On/off switch.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "AlertDialog",
+      "description": "Modal dialog primitives used by ConfirmDialog.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base",
+        "@kaiserinc/button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "confirm-dialog",
+      "type": "registry:ui",
+      "title": "ConfirmDialog",
+      "description": "Replaces window.confirm(): title, description, confirm and cancel, with a destructive variant and loading.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base",
+        "@kaiserinc/alert-dialog",
+        "@kaiserinc/button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/confirm-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "description": "Toasts for success, error, info and promises, state color on the icon only.",
+      "dependencies": [
+        "cn",
+        "sonner",
+        "next-themes",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder block in the muted tone.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty state: what happened and the next action.",
+      "dependencies": [
+        "cn",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Full-width soft table: muted header, thin rules, 44px rows.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Status badge: text and border in the state color, no saturated fill.",
+      "dependencies": [
+        "cn",
+        "class-variance-authority",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs with the active indicator in primary-text.",
+      "dependencies": [
+        "cn",
+        "class-variance-authority",
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "page-header",
+      "type": "registry:ui",
+      "title": "PageHeader",
+      "description": "Large page title in the Vercel style, optional description and actions.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base"
+      ],
+      "files": [
+        {
+          "path": "components/ui/page-header.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
