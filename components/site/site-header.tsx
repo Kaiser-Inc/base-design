@@ -17,13 +17,12 @@ const links = [
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
-  const next = resolvedTheme === "dark" ? "light" : "dark"
   return (
     <Button
       variant="ghost"
       size="icon"
-      aria-label={next === "light" ? "Usar tema claro" : "Usar tema escuro"}
-      onClick={() => setTheme(next)}
+      aria-label="Alternar tema claro e escuro"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       <SunIcon className="hidden dark:block" strokeWidth={1.75} />
       <MoonIcon className="block dark:hidden" strokeWidth={1.75} />
@@ -35,11 +34,12 @@ function SiteHeader() {
   const pathname = usePathname()
   return (
     <header className="border-b border-border">
-      <div className="mx-auto flex h-14 max-w-page items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="text-sm font-semibold tracking-tight">
+      {/* Mobile: brand and theme toggle on the first row, navigation on its own row. */}
+      <div className="mx-auto flex max-w-page flex-wrap items-center gap-x-6 gap-y-1 px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0 sm:px-6">
+        <Link href="/" className="mr-auto text-sm font-semibold tracking-tight sm:mr-0">
           KaiserInc Base
         </Link>
-        <nav aria-label="Seções" className="flex min-w-0 flex-1 gap-1 overflow-x-auto">
+        <nav aria-label="Seções" className="order-last -mx-2.5 flex w-full min-w-0 gap-1 overflow-x-auto [scrollbar-width:none] sm:order-none sm:mx-0 sm:w-auto sm:flex-1 [&::-webkit-scrollbar]:hidden">
           {links.map((link) => {
             const active = pathname === link.href
             return (

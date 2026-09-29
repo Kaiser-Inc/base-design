@@ -1,0 +1,81 @@
+import { render, screen, waitFor } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
+import { describe, expect, it, vi } from "vitest"
+
+import { Button } from "./button"
+import { ConfirmDialog } from "./confirm-dialog"
+
+function setup(props: Partial<React.ComponentProps<typeof ConfirmDialog>> = {}) {
+  const onConfirm = props.onConfirm ?? vi.fn()
+  render(
+    <ConfirmDialog
+      trigger={<Button>Excluir projeto</Button>}
+      title="Excluir o projeto Levelify?"
+      description="O projeto e o histórico somem para todos. Não dá para desfazer."
+      confirmLabel="Excluir"
+      variant="destructive"
+      onConfirm={onConfirm}
+      {...props}
+    />
+  )
+  return { onConfirm, user: userEvent.setup() }
+}
+
+describe("ConfirmDialog", () => {
+  it("opens from the keyboard and shows title and description", async () => {
+    const { user } = setup()
+    await user.tab()
+    await user.keyboard("{Enter}")
+    const dialog = await screen.findByRole("alertdialog")
+    expect(dialog).toHaveAccessibleName("Excluir o projeto Levelify?")
+    expect(dialog).toHaveAccessibleDescription(/Não dá para desfazer/)
+  })
+
+  it("cancel closes without confirming, with the pt-BR default label", async () => {
+    const { user, onConfirm } = setup()
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    await user.click(await screen.findByRole("button", { name: "Cancelar" }))
+    await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument())
+    expect(onConfirm).not.toHaveBeenCalled()
+  })
+
+  it("Escape closes without confirming", async () => {
+    const { user, onConfirm } = setup()
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    await screen.findByRole("alertdialog")
+    await user.keyboard("{Escape}")
+    await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument())
+    expect(onConfirm).not.toHaveBeenCalled()
+  })
+
+  it("confirm calls onConfirm, shows loading while it runs, then closes", async () => {
+    let finish!: () => void
+    const onConfirm = vi.fn(() => new Promise<void>((resolve) => (finish = resolve)))
+    const { user } = setup({ onConfirm })
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    const confirm = await screen.findByRole("button", { name: /^Excluir$/ })
+    await user.click(confirm)
+    expect(onConfirm).toHaveBeenCalledTimes(1)
+    expect(confirm).toHaveAttribute("aria-busy", "true")
+    expect(screen.getByRole("button", { name: "Cancelar" })).toBeDisabled()
+    finish()
+    await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument())
+  })
+
+  it("stays open when onConfirm fails, so the caller can show the error", async () => {
+    const onConfirm = vi.fn(() => Promise.reject(new Error("falhou")))
+    const { user } = setup({ onConfirm })
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    await user.click(await screen.findByRole("button", { name: /^Excluir$/ }))
+    await waitFor(() => expect(screen.getByRole("button", { name: /^Excluir$/ })).not.toHaveAttribute("aria-busy"))
+    expect(screen.getByRole("alertdialog")).toBeInTheDocument()
+  })
+
+  it("keeps the dialog flat: no blur, no pure black overlay, 720px wide", async () => {
+    const { user } = setup()
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    const dialog = await screen.findByRole("alertdialog")
+    expect(dialog.className).toMatch(/max-w-\[720px\]/)
+    expect(document.body.innerHTML).not.toMatch(/backdrop-blur|bg-black/)
+  })
+})

@@ -1,10 +1,13 @@
 import { cn } from "cn"
 
+// Decorative placeholder: the region that is loading carries aria-busy, not
+// each block.
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="skeleton"
-      className={cn("animate-pulse rounded-2xl bg-muted", className)}
+      aria-hidden="true"
+      className={cn("animate-pulse rounded-md bg-muted motion-reduce:animate-none", className)}
       {...props}
     />
   )

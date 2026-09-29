@@ -24,7 +24,7 @@ function InstallCommand({ name }: { name: string }) {
       <code className="min-w-0 truncate font-mono text-xs text-muted-foreground">{command}</code>
       <Button
         variant="ghost"
-        size="icon-sm"
+        size="icon"
         aria-label={copied ? "Comando copiado" : "Copiar comando de instalação"}
         onClick={copy}
       >
