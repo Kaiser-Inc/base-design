@@ -34,3 +34,6 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated registry output (built by shadcn build on prebuild)
+/public/r/

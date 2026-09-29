@@ -5,7 +5,7 @@
   "items": [
     {
       "name": "base",
-      "type": "registry:item",
+      "type": "registry:theme",
       "title": "KaiserInc Base",
       "description": "Tokens (violet 293 on zinc 286, no pure white or black), 32px controls, 6px radius and a dark-first ThemeProvider. Every other item depends on it.",
       "dependencies": [
