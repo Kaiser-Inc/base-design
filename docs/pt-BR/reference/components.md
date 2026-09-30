@@ -74,7 +74,7 @@ Partes: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`,
 
 ### `switch`
 
-`Switch` sobre o Base UI. `size`: `default` (20×32px) ou `sm` (16×24px). Desligado em `--input`, ligado em `--primary`.
+`Switch` sobre o Base UI. `size`: `default` (20×32px) ou `sm` (16×24px). Desligado em `--input`, ligado em `--primary`. O thumb desliza em 250ms com `ease-drawer`, e a cor do trilho acompanha em 250ms. Ao pressionar, o thumb se alarga em direção ao centro, como no iOS; o Switch desabilitado e o reduced motion não alargam.
 
 ## Feedback
 

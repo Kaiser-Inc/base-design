@@ -74,7 +74,7 @@ Parts: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, 
 
 ### `switch`
 
-`Switch` on Base UI. `size`: `default` (20×32px) or `sm` (16×24px). Off in `--input`, on in `--primary`.
+`Switch` on Base UI. `size`: `default` (20×32px) or `sm` (16×24px). Off in `--input`, on in `--primary`. The thumb slides over 250ms with `ease-drawer` and the track color follows over 250ms. Pressing widens the thumb toward the center, as on iOS; a disabled switch and reduced motion skip the widening.
 
 ## Feedback
 
