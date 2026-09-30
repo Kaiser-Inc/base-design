@@ -53,7 +53,7 @@ function AlertDialogContent({
         data-size={size}
         className={cn(
           // Bottom sheet below 640px, centered 720px dialog above (480px for size="sm").
-          "group/alert-dialog-content fixed inset-x-0 bottom-0 z-50 grid w-full gap-6 rounded-t-lg border-t border-border bg-popover p-6 text-popover-foreground shadow-[var(--shadow-overlay)] duration-[120ms] outline-none sm:inset-x-auto sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-lg sm:border-t-0 dark:border dark:border-border data-[size=default]:sm:max-w-[720px] data-[size=sm]:sm:max-w-[480px] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+          "group/alert-dialog-content fixed inset-x-0 bottom-0 z-50 grid w-full gap-6 rounded-t-lg border-t border-border bg-popover p-6 text-popover-foreground shadow-[var(--shadow-overlay)] duration-[120ms] outline-hidden sm:inset-x-auto sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-lg sm:border-t-0 dark:border dark:border-border data-[size=default]:sm:max-w-[720px] data-[size=sm]:sm:max-w-[480px] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
           className
         )}
         {...props}

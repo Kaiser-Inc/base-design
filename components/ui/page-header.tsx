@@ -28,7 +28,7 @@ function PageHeader({
           {title}
         </Heading>
         {description && (
-          <p data-slot="page-header-description" className="max-w-prose text-sm text-muted-foreground">
+          <p data-slot="page-header-description" className="max-w-[60ch] text-sm text-muted-foreground">
             {description}
           </p>
         )}

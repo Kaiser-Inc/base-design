@@ -16,16 +16,18 @@ describe("Button", () => {
     expect(screen.getByRole("button", { name: "Open" })).toHaveClass("h-control-sm")
   })
 
-  it("blocks clicks and announces progress while loading", async () => {
+  it("blocks clicks and announces progress while loading, without the disabled look", async () => {
     const onClick = vi.fn()
     render(
-      <Button loading onClick={onClick}>
-        Save
+      <Button variant="destructive" loading onClick={onClick}>
+        Excluir
       </Button>
     )
-    const button = screen.getByRole("button", { name: /save/i })
-    expect(button).toBeDisabled()
+    const button = screen.getByRole("button", { name: /excluir/i })
     expect(button).toHaveAttribute("aria-busy", "true")
+    expect(button).toHaveAttribute("aria-disabled", "true")
+    expect(button).not.toHaveAttribute("disabled")
+    expect(button).toHaveClass("text-destructive")
     expect(screen.getByRole("status")).toBeInTheDocument()
     await userEvent.click(button)
     expect(onClick).not.toHaveBeenCalled()

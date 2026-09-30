@@ -1,5 +1,7 @@
 "use client"
 
+import { PlusIcon } from "lucide-react"
+
 import { Showcase, ShowcaseRow } from "@/components/site/showcase"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -23,7 +25,9 @@ import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 
-const forcedFocus = "outline-2 outline-offset-2 outline-ring"
+// Static preview of the focus ring for the "Foco" rows. outline-solid is
+// required: the controls use outline-hidden, which zeroes the outline style.
+const forcedFocus = "outline-2 outline-solid outline-offset-2 outline-ring"
 
 // Base UI renders the item label in SelectValue only when it gets the items map.
 const statusItems = [
@@ -35,6 +39,43 @@ const statusItems = [
 function FormDemos() {
   return (
     <>
+      <Showcase
+        id="button"
+        title="Button"
+        description="Uma ação principal por tela. Todas as variantes têm 32px; a densa, de 28px, fica só dentro de tabela."
+        registryName="button"
+      >
+        <ShowcaseRow label="Variantes">
+          <Button>Criar projeto</Button>
+          <Button variant="outline">Cancelar</Button>
+          <Button variant="secondary">Duplicar</Button>
+          <Button variant="ghost">Ver detalhes</Button>
+          <Button variant="destructive">Excluir</Button>
+          <Button variant="link">Abrir documentação</Button>
+        </ShowcaseRow>
+        <ShowcaseRow label="Com ícone">
+          <Button>
+            <PlusIcon data-icon="inline-start" strokeWidth={1.75} />
+            Novo projeto
+          </Button>
+          <Button variant="outline" size="icon" aria-label="Adicionar projeto">
+            <PlusIcon strokeWidth={1.75} />
+          </Button>
+        </ShowcaseRow>
+        <ShowcaseRow label="Carregando e desabilitado">
+          <Button loading>Salvando</Button>
+          <Button variant="destructive" loading>
+            Excluindo
+          </Button>
+          <Button disabled>Publicar</Button>
+        </ShowcaseRow>
+        <ShowcaseRow label="Denso (só em tabela)">
+          <Button size="sm" variant="outline">
+            Abrir
+          </Button>
+        </ShowcaseRow>
+      </Showcase>
+
       <Showcase
         id="label"
         title="Label"

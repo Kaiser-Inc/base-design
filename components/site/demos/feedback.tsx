@@ -101,7 +101,7 @@ function FeedbackDemos() {
               })
             }
           >
-            Promessa
+            Com carregamento
           </Button>
         </ShowcaseRow>
       </Showcase>
@@ -152,7 +152,7 @@ function FeedbackDemos() {
         description="Diz o que aconteceu e oferece a próxima ação."
         registryName="empty"
       >
-        <Empty className="max-w-[720px] border-t border-border">
+        <Empty className="max-w-[720px]">
           <EmptyHeader>
             <EmptyMedia variant="icon">
               <FolderPlusIcon strokeWidth={1.75} />

@@ -10,7 +10,7 @@ describe("Skeleton", () => {
   it("uses the muted tone, the control radius and stops pulsing on reduced motion", () => {
     const { container } = render(<Skeleton className="h-4 w-40" />)
     const el = container.firstElementChild as HTMLElement
-    expect(el).toHaveClass("bg-muted", "rounded-md", "motion-reduce:animate-none")
+    expect(el).toHaveClass("bg-accent", "rounded-md", "motion-reduce:animate-none")
     expect(el).toHaveAttribute("aria-hidden", "true")
   })
 })

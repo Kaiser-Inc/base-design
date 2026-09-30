@@ -56,7 +56,7 @@ function Showcase({
           <h2 id={`${id}-title`} className="text-xl leading-7 font-semibold">
             {title}
           </h2>
-          {description && <p className="max-w-prose text-sm text-muted-foreground">{description}</p>}
+          {description && <p className="max-w-[60ch] text-sm text-muted-foreground">{description}</p>}
         </div>
         <InstallCommand name={registryName} />
       </div>

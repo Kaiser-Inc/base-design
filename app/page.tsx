@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { headers } from "next/headers"
 
 import { PageHeader } from "@/components/ui/page-header"
 
@@ -6,27 +7,55 @@ const groups = [
   {
     href: "/formulario",
     title: "Formulário",
-    items: "Button, Field, Input, Textarea, Select, Checkbox, Switch",
+    items: [
+      ["button", "Button"],
+      ["label", "Label"],
+      ["separator", "Separator"],
+      ["field", "Field"],
+      ["input", "Input"],
+      ["textarea", "Textarea"],
+      ["select", "Select"],
+      ["checkbox", "Checkbox"],
+      ["switch", "Switch"],
+    ],
   },
   {
     href: "/feedback",
     title: "Feedback",
-    items: "ConfirmDialog, Toaster, Skeleton, Spinner, Empty",
+    items: [
+      ["confirm-dialog", "ConfirmDialog"],
+      ["toaster", "Toaster"],
+      ["skeleton", "Skeleton"],
+      ["spinner", "Spinner"],
+      ["empty", "Empty"],
+    ],
   },
   {
     href: "/dados",
     title: "Dados e layout",
-    items: "Table, Badge, Tabs, PageHeader",
+    items: [
+      ["table", "Table"],
+      ["badge", "Badge"],
+      ["tabs", "Tabs"],
+      ["page-header", "PageHeader"],
+    ],
   },
 ]
 
-const registryConfig = `{
+const linkClass =
+  "w-fit rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+
+export default async function Page() {
+  // The registry lives on this same deployment, so its URL is this origin.
+  const h = await headers()
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000"
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https")
+  const registryConfig = `{
   "registries": {
-    "@kaiserinc": "https://<dominio-da-registry>/r/{name}.json"
+    "@kaiserinc": "${proto}://${host}/r/{name}.json"
   }
 }`
 
-export default function Page() {
   return (
     <>
       <PageHeader
@@ -38,7 +67,7 @@ export default function Page() {
         <h2 id="instalar" className="text-xl leading-7 font-semibold">
           Instalar
         </h2>
-        <ol className="flex max-w-prose list-decimal flex-col gap-3 pl-5 text-sm">
+        <ol className="flex max-w-[72ch] list-decimal flex-col gap-3 pl-5 text-sm">
           <li>
             Adicione a registry no <code className="font-mono text-xs">components.json</code> do projeto:
             <pre className="mt-2 overflow-x-auto rounded-md bg-muted p-3 font-mono text-xs">{registryConfig}</pre>
@@ -54,23 +83,28 @@ export default function Page() {
         </ol>
       </section>
 
-      <section aria-labelledby="componentes" className="flex flex-col gap-4 border-t border-border pt-8">
+      <section aria-labelledby="componentes" className="flex flex-col gap-6 border-t border-border pt-8">
         <h2 id="componentes" className="text-xl leading-7 font-semibold">
           Componentes
         </h2>
-        <ul className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-3">
           {groups.map((group) => (
-            <li key={group.href} className="flex flex-col gap-1">
-              <Link
-                href={group.href}
-                className="w-fit rounded-sm font-medium text-primary-text underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              >
+            <div key={group.href} className="flex flex-col gap-3">
+              <Link href={group.href} className={`${linkClass} font-medium text-primary-text`}>
                 {group.title}
               </Link>
-              <span className="text-sm text-muted-foreground">{group.items}</span>
-            </li>
+              <ul className="flex flex-col gap-1.5 text-sm">
+                {group.items.map(([id, name]) => (
+                  <li key={id}>
+                    <Link href={`${group.href}#${id}`} className={`${linkClass} text-muted-foreground hover:text-foreground`}>
+                      {name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   )

@@ -6,7 +6,7 @@ import { Spinner } from "@/components/ui/spinner"
 
 // KaiserInc Base: um tamanho de controle (32px, como no Rhea), 28px só dentro de tabela.
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-colors duration-[120ms] ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:border-border disabled:bg-muted disabled:text-subtle-foreground aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-colors duration-[120ms] ease-out outline-hidden select-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:border-border disabled:bg-muted disabled:text-subtle-foreground aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -42,6 +42,7 @@ function Button({
   loading = false,
   disabled,
   children,
+  onClick,
   ...props
 }: ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
@@ -51,13 +52,20 @@ function Button({
   return (
     <ButtonPrimitive
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      disabled={disabled || loading}
+      data-loading={loading || undefined}
+      className={cn(buttonVariants({ variant, size, className }), loading && "relative cursor-progress")}
+      disabled={disabled}
+      aria-disabled={loading || undefined}
       aria-busy={loading || undefined}
+      onClick={loading ? (event) => event.preventDefault() : onClick}
       {...props}
     >
-      {loading && <Spinner />}
-      {children}
+      {/* While loading the label turns transparent instead of disappearing, so
+          the button keeps its width and its accessible name. */}
+      {loading && <Spinner className="absolute inset-0 m-auto" />}
+      <span data-slot="button-label" className={cn("inline-flex items-center gap-[inherit]", loading && "text-transparent")}>
+        {children}
+      </span>
     </ButtonPrimitive>
   )
 }

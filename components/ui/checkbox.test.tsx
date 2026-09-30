@@ -29,7 +29,7 @@ describe("Checkbox", () => {
     expect(checkbox).toHaveClass(
       "size-4",
       "rounded-sm",
-      "border-strong",
+      "border-subtle-foreground",
       "data-checked:bg-primary",
       "data-checked:text-primary-foreground",
       "focus-visible:outline-2"
@@ -39,5 +39,12 @@ describe("Checkbox", () => {
       "stroke-width",
       "1.75"
     )
+  })
+
+  it("draws the unchecked box with a border that meets 3:1", () => {
+    render(<Checkbox aria-label="Aceito" />)
+    const box = screen.getByRole("checkbox", { name: "Aceito" })
+    expect(box).toHaveClass("border-subtle-foreground")
+    expect(box.className).not.toMatch(/(^|\s)border-strong(\s|$)/)
   })
 })

@@ -214,7 +214,7 @@ function DataDemos() {
           <Badge variant="warning">Atenção</Badge>
           <Badge variant="destructive">Falhou</Badge>
         </ShowcaseRow>
-        <ShowcaseRow label="Alias padrão">
+        <ShowcaseRow label="Sem variante">
           <Badge>Sem status</Badge>
         </ShowcaseRow>
       </Showcase>
