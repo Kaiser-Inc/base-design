@@ -51,7 +51,7 @@ describe("Button", () => {
     )
     for (const name of ["Save", "Cancel", "Copy", "More", "Delete"]) {
       const button = screen.getByRole("button", { name })
-      expect(button).toHaveClass("active:not-aria-disabled:scale-[0.97]")
+      expect(button).toHaveClass("motion-safe:active:not-aria-disabled:scale-[0.97]")
       expect(button.className).toMatch(/transition-\[[^\]]*scale[^\]]*\]/)
     }
     expect(screen.getByRole("button", { name: "Docs" }).className).not.toMatch(/active:[^\s]*scale/)
