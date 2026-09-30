@@ -166,8 +166,13 @@
         },
         "@media (prefers-reduced-motion: reduce)": {
           "*, *::before, *::after": {
-            "animation-duration": "1ms !important",
-            "transition-duration": "1ms !important"
+            "transition-property": "opacity, color, background-color, border-color, outline-color, fill, stroke, stroke-dashoffset !important",
+            "--tw-enter-scale": "1 !important",
+            "--tw-enter-translate-x": "0 !important",
+            "--tw-enter-translate-y": "0 !important",
+            "--tw-exit-scale": "1 !important",
+            "--tw-exit-translate-x": "0 !important",
+            "--tw-exit-translate-y": "0 !important"
           }
         }
       }
