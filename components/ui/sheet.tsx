@@ -17,9 +17,9 @@ const SheetSideContext = React.createContext<SheetSide>("right")
 // drag never opens a gap between the sheet and the edge.
 const sideClasses: Record<SheetSide, string> = {
   right:
-    "h-full w-[calc(400px+3rem)] max-w-screen -mr-12 border-l pr-12 [transform:translateX(var(--drawer-swipe-movement-x))] data-starting-style:[transform:translateX(calc(100%-3rem+2px))] data-ending-style:[transform:translateX(calc(100%-3rem+2px))]",
+    "h-full w-[calc(400px+3rem)] max-w-screen -mr-12 pr-12 dark:border-l [transform:translateX(var(--drawer-swipe-movement-x))] data-starting-style:[transform:translateX(calc(100%-3rem+2px))] data-ending-style:[transform:translateX(calc(100%-3rem+2px))]",
   bottom:
-    "max-h-[calc(80vh+3rem)] w-full -mb-12 rounded-t-lg border-t pb-[calc(3rem+env(safe-area-inset-bottom,0px))] [transform:translateY(var(--drawer-swipe-movement-y))] data-starting-style:[transform:translateY(calc(100%-3rem+2px))] data-ending-style:[transform:translateY(calc(100%-3rem+2px))]",
+    "max-h-[calc(80vh+3rem)] w-full -mb-12 rounded-t-lg dark:border-t pb-[calc(3rem+env(safe-area-inset-bottom,0px))] [transform:translateY(var(--drawer-swipe-movement-y))] data-starting-style:[transform:translateY(calc(100%-3rem+2px))] data-ending-style:[transform:translateY(calc(100%-3rem+2px))]",
 }
 
 function Sheet({ side = "right", ...props }: DrawerPrimitive.Root.Props & { side?: SheetSide }) {
@@ -61,7 +61,7 @@ function SheetContent({
             data-slot="sheet-content"
             data-side={side}
             className={cn(
-              "relative flex flex-col border-border bg-popover text-popover-foreground shadow-[var(--shadow-overlay)] outline-hidden transition-transform duration-300 ease-drawer data-swiping:duration-0 data-swiping:select-none data-ending-style:duration-[calc(min(var(--drawer-swipe-strength,1),0.75)*400ms)] dark:shadow-none",
+              "relative flex flex-col bg-popover text-popover-foreground shadow-[var(--shadow-overlay)] outline-hidden transition-transform duration-300 ease-drawer data-swiping:duration-0 data-swiping:select-none data-ending-style:duration-[calc(min(var(--drawer-swipe-strength,1),0.75)*400ms)] dark:border-border",
               sideClasses[side],
               className
             )}

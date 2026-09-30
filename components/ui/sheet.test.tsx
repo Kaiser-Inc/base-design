@@ -84,4 +84,13 @@ describe("Sheet", () => {
       "data-ending-style:duration-[calc(min(var(--drawer-swipe-strength,1),0.75)*400ms)]"
     )
   })
+
+  it.each([["right", "dark:border-l"], ["bottom", "dark:border-t"]] as const)(
+    "follows the overlay surface rule on the %s side: shadow in light, border in dark",
+    async (side, border) => {
+      const { dialog } = await open(side)
+      expect(dialog).toHaveClass("shadow-[var(--shadow-overlay)]", border, "dark:border-border")
+      expect(dialog.className).not.toMatch(/(^|\s)border-[lt](\s|$)|dark:shadow-none/)
+    }
+  )
 })
