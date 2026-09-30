@@ -45,7 +45,7 @@ function ShowcaseCode({ code }: { code: string }) {
 
   return (
     <details className="group flex flex-col">
-      <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-sm text-sm font-medium text-primary-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
+      <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-sm text-sm font-medium text-primary-text outline-0 outline-solid outline-transparent outline-offset-0 transition-[color,outline-color,outline-width,outline-offset] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
         <ChevronRightIcon
           className="size-4 transition-transform duration-[120ms] ease-out group-open:rotate-90"
           strokeWidth={1.75}
@@ -133,7 +133,7 @@ function ShowcaseIndex({ items }: { items: { id: string; title: string }[] }) {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="block w-fit rounded-sm py-0.5 text-muted-foreground transition-colors duration-[120ms] ease-out hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-ring"
+              className="block w-fit rounded-sm py-0.5 text-muted-foreground outline-0 outline-solid outline-transparent outline-offset-0 transition-[color,outline-color,outline-width,outline-offset] duration-150 ease-out hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {item.title}
             </a>

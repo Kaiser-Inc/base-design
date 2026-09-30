@@ -44,7 +44,7 @@ const groups = [
 ]
 
 const linkClass =
-  "w-fit rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+  "w-fit rounded-sm underline-offset-4 hover:underline outline-0 outline-solid outline-transparent outline-offset-0 transition-[color,outline-color,outline-width,outline-offset] duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
 
 export default async function Page() {
   // The registry lives on this same deployment, so its URL is this origin.
