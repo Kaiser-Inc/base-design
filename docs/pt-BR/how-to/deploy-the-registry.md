@@ -8,6 +8,17 @@ Use este guia para publicar a registry e a vitrine na Vercel, para os projetos d
 
 O `pnpm build` roda antes o `shadcn build` (o script `prebuild`), que grava cada item em `public/r/<nome>.json`, e depois faz o build do app Next. A Vercel serve os dois: a vitrine em `/` e a registry em `/r/{name}.json`. Não precisa de configuração extra.
 
+## Situação atual
+
+A registry está no ar em `https://base-design-seven.vercel.app` (projeto `base-design` na Vercel). O repositório no GitHub é privado e pertence à organização `Kaiser-Inc`, e o plano Hobby da Vercel não conecta repositório privado de organização; por isso o push não gera deploy sozinho. Enquanto o repositório não for público ou o plano não for Pro, faça o deploy a partir da `main` pela CLI:
+
+```bash
+git switch main && git pull
+npx vercel@latest deploy --prod
+```
+
+O `.vercelignore` mantém os arquivos locais (`.dev-flow/`, `.env*`) fora do envio.
+
 ## 1. Importe o repositório
 
 1. Na Vercel, escolha **Add New → Project** e importe o `Kaiser-Inc/base-design`.

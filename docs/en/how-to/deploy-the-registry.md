@@ -8,6 +8,17 @@ Use this guide to publish the registry and the showcase on Vercel, so projects s
 
 `pnpm build` runs `shadcn build` first (the `prebuild` script), which writes every item to `public/r/<name>.json`, then builds the Next app. Vercel serves both: the showcase at `/` and the registry at `/r/{name}.json`. No extra configuration is needed.
 
+## Current setup
+
+The registry is live at `https://base-design-seven.vercel.app` (project `base-design` on Vercel). The GitHub repository is private and owned by the `Kaiser-Inc` organization, and Vercel's Hobby plan cannot connect private organization repositories, so pushes do not deploy by themselves. Until the repository is public or the plan is Pro, deploy from `main` with the CLI:
+
+```bash
+git switch main && git pull
+npx vercel@latest deploy --prod
+```
+
+`.vercelignore` keeps local files (`.dev-flow/`, `.env*`) out of the upload.
+
 ## 1. Import the repository
 
 1. On Vercel, choose **Add New → Project** and import `Kaiser-Inc/base-design`.

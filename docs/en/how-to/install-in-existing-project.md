@@ -7,7 +7,7 @@ Use this guide when a project already has code, and maybe its own components, an
 ## Before you start
 
 - The project runs Next.js with Tailwind CSS v4. Tailwind v3 projects need an upgrade first; the registry ships v4 tokens.
-- You know the registry URL: the deployed domain, or `http://localhost:3100` with this repository running `pnpm registry:build && pnpm dev -p 3100`.
+- The registry URL is `https://base-design-seven.vercel.app`. For unreleased changes, use `http://localhost:3100` with this repository running `pnpm registry:build && pnpm dev -p 3100`.
 
 ## 1. Check whether the project already has shadcn
 
@@ -38,7 +38,7 @@ In `components.json`:
 ```json
 {
   "registries": {
-    "@kaiserinc": "<registry-url>/r/{name}.json"
+    "@kaiserinc": "https://base-design-seven.vercel.app/r/{name}.json"
   }
 }
 ```
