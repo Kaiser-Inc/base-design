@@ -7,7 +7,7 @@ Use este guia quando o projeto já tem código, e talvez componentes próprios, 
 ## Antes de começar
 
 - O projeto roda Next.js com Tailwind CSS v4. Projeto em Tailwind v3 precisa migrar antes, porque a registry entrega tokens de v4.
-- Você sabe a URL da registry: o domínio do deploy, ou `http://localhost:3100` com este repositório rodando `pnpm registry:build && pnpm dev -p 3100`.
+- A URL da registry é `https://base-design-seven.vercel.app`. Para mudanças ainda não publicadas, use `http://localhost:3100` com este repositório rodando `pnpm registry:build && pnpm dev -p 3100`.
 
 ## 1. Veja se o projeto já tem shadcn
 
@@ -38,7 +38,7 @@ No `components.json`:
 ```json
 {
   "registries": {
-    "@kaiserinc": "<url-da-registry>/r/{name}.json"
+    "@kaiserinc": "https://base-design-seven.vercel.app/r/{name}.json"
   }
 }
 ```

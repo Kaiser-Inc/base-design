@@ -1,0 +1,8 @@
+# Local-only files that must not be uploaded by `vercel deploy`
+.dev-flow/
+.code-review-graph/
+.env*
+node_modules/
+.next/
+public/r/
+coverage/

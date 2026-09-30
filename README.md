@@ -32,12 +32,12 @@ You need a Next.js project with Tailwind CSS v4 and shadcn (`pnpm dlx shadcn@lat
    ```json
    {
      "registries": {
-       "@kaiserinc": "<registry-url>/r/{name}.json"
+       "@kaiserinc": "https://base-design-seven.vercel.app/r/{name}.json"
      }
    }
    ```
 
-   Until the registry is deployed, run it locally (see [Development](#development)) and use `http://localhost:3100`.
+   To work against unreleased changes, run the registry locally (see [Development](#development)) and use `http://localhost:3100` instead.
 
 2. Install the base. It is a `registry:theme`, so it replaces the project's color, radius and spacing tokens:
 
