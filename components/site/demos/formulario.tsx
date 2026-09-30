@@ -517,6 +517,12 @@ function FormDemos() {
       <SheetClose render={<Button />}>Salvar</SheetClose>
     </SheetFooter>
   </SheetContent>
+</Sheet>
+
+// No celular: sobe da borda de baixo, com alça de arraste.
+<Sheet side="bottom">
+  <SheetTrigger render={<Button variant="outline" />}>Editar</SheetTrigger>
+  <SheetContent>{/* mesmo conteúdo */}</SheetContent>
 </Sheet>`}
         registryName="sheet"
       >

@@ -17,4 +17,11 @@ describe("FormDemos sheet section", () => {
     expect(within(dialog).getByLabelText("Nome do projeto")).toHaveValue("Levelify")
     expect(within(dialog).getByRole("button", { name: "Salvar" })).toBeInTheDocument()
   })
+
+  it("shows the code for both sides", () => {
+    render(<FormDemos />)
+    const code = document.querySelector("#sheet pre")?.textContent ?? ""
+    expect(code).toContain('<Sheet side="right">')
+    expect(code).toContain('<Sheet side="bottom">')
+  })
 })
