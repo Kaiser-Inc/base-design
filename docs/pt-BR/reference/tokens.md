@@ -65,6 +65,16 @@ Iguais nos dois temas.
 | `--radius-lg` | `8px` | Diálogos e popovers (`rounded-lg`) |
 | `--shadow-overlay` | claro: `0 8px 24px rgb(0 0 0 / 0.08)`; escuro: `none` | Superfícies elevadas; no escuro, uma borda faz o papel da sombra |
 
+## Motion
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Entrada e saída de elementos (`ease-out`). Substitui a curva padrão do Tailwind |
+| `--ease-in-out` | `cubic-bezier(0.77, 0, 0.175, 1)` | Elementos que se movem na tela, como o indicador de aba (`ease-in-out`). Substitui a curva padrão do Tailwind |
+| `--ease-drawer` | `cubic-bezier(0.32, 0.72, 0, 1)` | Sheets e o bottom sheet do mobile (`ease-drawer`) |
+
+As durações ficam nas classes: de 120 a 200ms em controles e popups, 300ms em sheets. A saída é mais rápida que a entrada. Com `prefers-reduced-motion`, os componentes mantêm fades e mudanças de cor e deixam de animar escala e posição.
+
 ## Contraste
 
 Medido com a fórmula do WCAG sobre os valores OKLCH acima:

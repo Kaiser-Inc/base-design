@@ -65,6 +65,16 @@ The same in both themes.
 | `--radius-lg` | `8px` | Dialogs and popovers (`rounded-lg`) |
 | `--shadow-overlay` | light: `0 8px 24px rgb(0 0 0 / 0.08)`; dark: `none` | Raised surfaces; dark mode uses a border instead |
 
+## Motion
+
+| Token | Value | Use |
+|---|---|---|
+| `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Entering and exiting UI (`ease-out`). Replaces Tailwind's default curve |
+| `--ease-in-out` | `cubic-bezier(0.77, 0, 0.175, 1)` | Elements moving on screen, such as the tab indicator (`ease-in-out`). Replaces Tailwind's default curve |
+| `--ease-drawer` | `cubic-bezier(0.32, 0.72, 0, 1)` | Sheets and the mobile bottom sheet (`ease-drawer`) |
+
+Durations stay in the classes: 120 to 200ms for controls and popups, 300ms for sheets. Exits are faster than entrances. Under `prefers-reduced-motion`, components keep fades and color changes and drop scale and position changes.
+
 ## Contrast
 
 Measured with the WCAG formula on the OKLCH values above:
