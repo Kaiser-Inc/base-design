@@ -43,6 +43,9 @@ function FormDemos() {
         id="button"
         title="Button"
         description="Uma ação principal por tela. Todas as variantes têm 32px; a densa, de 28px, fica só dentro de tabela."
+        code={`<Button>Salvar</Button>
+<Button variant="outline">Cancelar</Button>
+<Button loading>Salvando</Button>`}
         registryName="button"
       >
         <ShowcaseRow label="Variantes">
@@ -80,6 +83,8 @@ function FormDemos() {
         id="label"
         title="Label"
         description="Identifica o campo com texto curto e visível."
+        code={`<Label htmlFor="nome">Nome do projeto</Label>
+<Input id="nome" placeholder="Ex.: Levelify" />`}
         registryName="label"
       >
         <ShowcaseRow label="Padrão">
@@ -108,6 +113,8 @@ function FormDemos() {
         id="separator"
         title="Separator"
         description="Divide conteúdos relacionados com uma linha discreta."
+        code={`<Separator />
+<Separator orientation="vertical" />`}
         registryName="separator"
       >
         <ShowcaseRow label="Horizontal">
@@ -126,6 +133,11 @@ function FormDemos() {
         id="field"
         title="Field"
         description="Agrupa label, controle, ajuda e erro com relações acessíveis."
+        code={`<Field data-invalid={!!erro}>
+  <FieldLabel htmlFor="email">E-mail do responsável</FieldLabel>
+  <Input id="email" aria-invalid={!!erro || undefined} aria-describedby="email-erro" />
+  {erro && <FieldError id="email-erro">{erro}</FieldError>}
+</Field>`}
         registryName="field"
       >
         <ShowcaseRow label="Formulário de projeto">
@@ -186,6 +198,9 @@ function FormDemos() {
         id="input"
         title="Input"
         description="Campo preenchido de uma linha, com texto legível também no mobile."
+        code={`<Input placeholder="Ex.: Portfolio" />
+<Input aria-invalid="true" />
+<Input disabled />`}
         registryName="input"
       >
         <ShowcaseRow label="Padrão">
@@ -227,6 +242,7 @@ function FormDemos() {
         id="textarea"
         title="Textarea"
         description="Texto de várias linhas com altura inicial confortável e crescimento livre."
+        code={`<Textarea placeholder="Descreva o objetivo do projeto" />`}
         registryName="textarea"
       >
         <ShowcaseRow label="Padrão">
@@ -268,6 +284,21 @@ function FormDemos() {
         id="select"
         title="Select"
         description="Escolha uma opção em um menu operável por teclado."
+        code={`const status = [
+  { value: "active", label: "Ativo" },
+  { value: "paused", label: "Pausado" },
+]
+
+<Select items={status} defaultValue="active">
+  <SelectTrigger aria-label="Status do projeto">
+    <SelectValue />
+  </SelectTrigger>
+  <SelectContent>
+    {status.map((s) => (
+      <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+    ))}
+  </SelectContent>
+</Select>`}
         registryName="select"
       >
         <ShowcaseRow label="Padrão">
@@ -327,6 +358,10 @@ function FormDemos() {
         id="checkbox"
         title="Checkbox"
         description="Ativa uma escolha independente e expõe o estado a tecnologias assistivas."
+        code={`<Field orientation="horizontal">
+  <Checkbox id="backup" />
+  <FieldLabel htmlFor="backup">Criar backup semanal</FieldLabel>
+</Field>`}
         registryName="checkbox"
       >
         <ShowcaseRow label="Desmarcado e marcado">
@@ -377,6 +412,10 @@ function FormDemos() {
         id="switch"
         title="Switch"
         description="Liga ou desliga uma configuração com efeito imediato."
+        code={`<Field orientation="horizontal">
+  <Switch id="deploys" />
+  <FieldLabel htmlFor="deploys">Avisar sobre novos deploys</FieldLabel>
+</Field>`}
         registryName="switch"
       >
         <ShowcaseRow label="Desligado e ligado">

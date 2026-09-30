@@ -26,6 +26,17 @@ function FeedbackDemos() {
         id="confirm-dialog"
         title="ConfirmDialog"
         description="Substitui o confirm() do navegador. Confirmar mostra carregando enquanto a ação roda; se ela falhar, o diálogo continua aberto."
+        code={`<ConfirmDialog
+  trigger={<Button variant="destructive">Excluir projeto</Button>}
+  title="Excluir o projeto Levelify?"
+  description="Não dá para desfazer."
+  confirmLabel="Excluir"
+  variant="destructive"
+  onConfirm={async () => {
+    await excluirProjeto(id)
+    toast.success("Projeto excluído")
+  }}
+/>`}
         registryName="confirm-dialog"
       >
         <ShowcaseRow label="Destrutivo">
@@ -74,6 +85,12 @@ function FeedbackDemos() {
         id="toaster"
         title="Toaster"
         description="Aviso curto sobre o resultado de uma ação. A cor de estado fica só no ícone."
+        code={`// uma vez, no layout
+<Toaster />
+
+// em qualquer lugar
+toast.success("Projeto salvo")
+toast.error("Não foi possível salvar", { description: "Tente de novo." })`}
         registryName="sonner"
       >
         <ShowcaseRow label="Tipos">
@@ -110,6 +127,9 @@ function FeedbackDemos() {
         id="skeleton"
         title="Skeleton"
         description="Ocupa o lugar do conteúdo enquanto ele carrega, com a mesma forma."
+        code={`<div aria-busy="true" aria-label="Carregando projetos">
+  <Skeleton className="h-4 w-40" />
+</div>`}
         registryName="skeleton"
       >
         <ShowcaseRow label="Lista carregando">
@@ -131,6 +151,8 @@ function FeedbackDemos() {
         id="spinner"
         title="Spinner"
         description="Para ações curtas dentro de um controle ou de um trecho da página."
+        code={`<Spinner />
+<Spinner label="Carregando dados" />`}
         registryName="spinner"
       >
         <ShowcaseRow label="Tamanhos">
@@ -150,6 +172,15 @@ function FeedbackDemos() {
         id="empty"
         title="Empty"
         description="Diz o que aconteceu e oferece a próxima ação."
+        code={`<Empty>
+  <EmptyHeader>
+    <EmptyTitle>Nenhum projeto ainda</EmptyTitle>
+    <EmptyDescription>Crie o primeiro projeto.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>
+    <Button>Criar projeto</Button>
+  </EmptyContent>
+</Empty>`}
         registryName="empty"
       >
         <Empty className="max-w-[720px]">

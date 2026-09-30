@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { headers } from "next/headers"
 
+import { ProjectsScreen } from "@/components/site/projects-screen"
 import { PageHeader } from "@/components/ui/page-header"
 
 const groups = [
@@ -62,6 +63,18 @@ export default async function Page() {
         title="KaiserInc Base"
         description="Interface plana, larga e suave. Componentes prontos para copiar para qualquer projeto Next com shadcn."
       />
+
+      <section aria-labelledby="exemplo" className="flex flex-col gap-4 border-t border-border pt-8">
+        <div className="flex flex-col gap-1">
+          <h2 id="exemplo" className="text-xl leading-7 font-semibold">
+            Uma tela real
+          </h2>
+          <p className="max-w-[60ch] text-sm text-muted-foreground">
+            A lista de projetos abaixo usa só componentes da registry. Troque o estado para ver carregando, vazio e erro.
+          </p>
+        </div>
+        <ProjectsScreen />
+      </section>
 
       <section aria-labelledby="instalar" className="flex flex-col gap-4 border-t border-border pt-8">
         <h2 id="instalar" className="text-xl leading-7 font-semibold">

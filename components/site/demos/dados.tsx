@@ -124,6 +124,20 @@ function DataDemos() {
         id="table"
         title="Table"
         description="Organiza dados comparáveis em largura total e vira uma lista legível no mobile."
+        code={`<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Projeto</TableHead>
+      <TableHead>Status</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Levelify</TableCell>
+      <TableCell><Badge variant="success">Ativo</Badge></TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
         registryName="table"
       >
         <ShowcaseRow label="Projetos">
@@ -205,6 +219,9 @@ function DataDemos() {
         id="badge"
         title="Badge"
         description="Mostra status com cor no texto e na borda, sem fundo saturado."
+        code={`<Badge variant="success">Ativo</Badge>
+<Badge variant="warning">Atenção</Badge>
+<Badge variant="neutral">Pausado</Badge>`}
         registryName="badge"
       >
         <ShowcaseRow label="Variantes">
@@ -223,6 +240,14 @@ function DataDemos() {
         id="tabs"
         title="Tabs"
         description="Alterna seções relacionadas com setas, sem pills ou fundo na aba ativa."
+        code={`<Tabs defaultValue="visao">
+  <TabsList>
+    <TabsTrigger value="visao">Visão geral</TabsTrigger>
+    <TabsTrigger value="atividade">Atividade</TabsTrigger>
+  </TabsList>
+  <TabsContent value="visao">…</TabsContent>
+  <TabsContent value="atividade">…</TabsContent>
+</Tabs>`}
         registryName="tabs"
       >
         <ShowcaseRow label="Padrão e desabilitado">
@@ -279,6 +304,11 @@ function DataDemos() {
         id="page-header"
         title="PageHeader"
         description="Nome da página como o maior texto da tela, com descrição opcional e a ação principal à direita. O título desta página é um PageHeader; os exemplos abaixo usam headingLevel={2} para não repetir o h1."
+        code={`<PageHeader
+  title="Projetos"
+  description="Todos os produtos da KaiserInc em um lugar."
+  actions={<Button>Criar projeto</Button>}
+/>`}
         registryName="page-header"
       >
         <ShowcaseRow label="Com descrição e ação">
