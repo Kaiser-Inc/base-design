@@ -387,6 +387,27 @@
       ]
     },
     {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Side or bottom panel with swipe to dismiss, built on the Base UI Drawer.",
+      "dependencies": [
+        "cn",
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@kaiserinc/base",
+        "@kaiserinc/button"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "confirm-dialog",
       "type": "registry:ui",
       "title": "ConfirmDialog",

@@ -101,6 +101,12 @@ The primitives under `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `Aler
 
 `AlertDialogContent` `size`: `default` (720px wide) or `sm` (480px). Below 640px it becomes a bottom sheet. The overlay is `--background` at 70%, with no blur. On desktop it fades and scales in from 0.96 over 200ms and leaves in 150ms. As a bottom sheet it slides up over 300ms with `ease-drawer` and leaves in 200ms. Both use transitions, so closing mid-animation reverses from the current frame.
 
+### `sheet`
+
+Parts: `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, `SheetClose`. Built on the Base UI Drawer.
+
+`Sheet` `side`: `right` (default, 400px wide, at most the viewport minus 3rem) or `bottom` (up to 80vh, with a drag handle). It closes by swiping toward its edge, a quick flick is enough; by Escape; by clicking the overlay; and by the X button, labeled "Fechar" (`closeLabel` changes it, `showCloseButton={false}` hides it). It slides in over 300ms with `ease-drawer`, and its exit follows the swipe speed. Form fields in a bottom sheet stay above the software keyboard. Registry deps: `base`, `button`.
+
 ### `sonner`
 
 `Toaster` on [sonner](https://sonner.emilkowal.ski). Render it once in the layout, then call `toast.success`, `toast.error`, `toast.info`, `toast.warning` or `toast.promise` from `sonner`. The live region is labelled "Notificações"; the state color is on the icon only. npm: `sonner`.

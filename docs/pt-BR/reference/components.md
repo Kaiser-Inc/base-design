@@ -101,6 +101,12 @@ As peças por trás do `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `Al
 
 `size` do `AlertDialogContent`: `default` (720px de largura) ou `sm` (480px). Abaixo de 640px ele vira uma folha que sobe da base. O fundo atrás dele é o `--background` a 70%, sem blur. No desktop, entra com fade e escala a partir de 0,96 em 200ms e sai em 150ms. Como folha, sobe em 300ms com `ease-drawer` e sai em 200ms. As duas formas usam transição, então fechar no meio da animação volta do quadro atual.
 
+### `sheet`
+
+Partes: `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, `SheetClose`. Construído sobre o Drawer do Base UI.
+
+`side` do `Sheet`: `right` (padrão, 400px de largura, no máximo a tela menos 3rem) ou `bottom` (até 80vh, com alça de arraste). Fecha com um arraste em direção à borda, e um gesto rápido basta; com Esc; com clique fora; e pelo botão X, com o rótulo "Fechar" (`closeLabel` troca o texto, `showCloseButton={false}` esconde). Entra em 300ms com `ease-drawer`, e a saída acompanha a velocidade do gesto. Campos de formulário num bottom sheet ficam acima do teclado virtual. Dependências na registry: `base`, `button`.
+
 ### `sonner`
 
 `Toaster` sobre o [sonner](https://sonner.emilkowal.ski). Coloque uma vez no layout e chame `toast.success`, `toast.error`, `toast.info`, `toast.warning` ou `toast.promise`, importados de `sonner`. A região ao vivo se chama "Notificações"; a cor de estado fica só no ícone. npm: `sonner`.

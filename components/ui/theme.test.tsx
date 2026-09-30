@@ -19,3 +19,14 @@ describe("motion tokens", () => {
     expect(base.cssVars?.theme?.[name]).toBe(value)
   })
 })
+
+describe("registry", () => {
+  it("publishes the sheet on top of base and button", () => {
+    const sheet = registry.items.find((item) => item.name === "sheet") as
+      | { type: string; registryDependencies: string[]; files: { path: string }[] }
+      | undefined
+    expect(sheet?.type).toBe("registry:ui")
+    expect(sheet?.registryDependencies).toEqual(["@kaiserinc/base", "@kaiserinc/button"])
+    expect(sheet?.files[0].path).toBe("components/ui/sheet.tsx")
+  })
+})
