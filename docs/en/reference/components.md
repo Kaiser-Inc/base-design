@@ -66,7 +66,8 @@ Parts: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, 
 
 - Pass `items` (`{ value, label }[]`) to `Select`, or the trigger shows the raw value.
 - `SelectTrigger` looks like `Input` (32px, filled).
-- `SelectContent` props: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`true`).
+- `SelectContent` props: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`false`).
+- The list opens 4px below the trigger, at the trigger's width, with item text and the check lined up with the trigger's text and chevron. It fades and scales from the trigger over 150ms. `alignItemWithTrigger` places the selected item over the trigger instead, macOS style, with a 120ms fade.
 
 ### `checkbox`
 

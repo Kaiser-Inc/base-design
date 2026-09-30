@@ -90,6 +90,42 @@ describe("Select", () => {
       "data-[side=none]:data-ending-style:scale-100"
     )
   })
+
+  it("opens below the trigger by default instead of over it", async () => {
+    const user = userEvent.setup()
+    render(
+      <Select items={[{ value: "active", label: "Ativo" }]} defaultValue="active">
+        <SelectTrigger aria-label="Status">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    await user.click(screen.getByRole("combobox", { name: "Status" }))
+    const popup = document.querySelector('[data-slot="select-content"]')!
+    expect(popup).toHaveAttribute("data-align-trigger", "false")
+  })
+
+  it("lines item text and the check up with the trigger's text and chevron", async () => {
+    const user = userEvent.setup()
+    render(
+      <Select items={[{ value: "active", label: "Ativo" }]} defaultValue="active">
+        <SelectTrigger aria-label="Status">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    expect(screen.getByRole("combobox", { name: "Status" })).toHaveClass("px-3")
+    await user.click(screen.getByRole("combobox", { name: "Status" }))
+    const item = await screen.findByRole("option", { name: "Ativo" })
+    expect(item).toHaveClass("pl-3", "pr-9")
+    expect(item.querySelector("span.absolute")).toHaveClass("right-3")
+  })
 })
 
 describe("Select value label", () => {

@@ -66,7 +66,7 @@ function SelectContent({
   sideOffset = 4,
   align = "center",
   alignOffset = 0,
-  alignItemWithTrigger = true,
+  alignItemWithTrigger = false,
   ...props
 }: SelectPrimitive.Popup.Props &
   Pick<
@@ -85,6 +85,7 @@ function SelectContent({
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
+          data-align-trigger={alignItemWithTrigger}
           className={cn(
             "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-[var(--shadow-overlay)] transition-[opacity,scale] duration-150 ease-out data-starting-style:opacity-0 data-ending-style:opacity-0 data-starting-style:scale-96 data-ending-style:scale-96 data-[side=none]:duration-[120ms] data-[side=none]:data-starting-style:scale-100 data-[side=none]:data-ending-style:scale-100 dark:border dark:border-border dark:shadow-none",
             className
@@ -122,7 +123,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex h-control w-full cursor-default items-center gap-2 rounded-md pr-8 pl-2 text-sm transition-colors duration-[120ms] ease-out outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-selected:bg-accent data-disabled:pointer-events-none data-disabled:text-subtle-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex h-control w-full cursor-default items-center gap-2 rounded-md pr-9 pl-3 text-sm transition-colors duration-[120ms] ease-out outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-selected:bg-accent data-disabled:pointer-events-none data-disabled:text-subtle-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className
       )}
       {...props}
@@ -132,7 +133,7 @@ function SelectItem({
       </SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator
         render={
-          <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
+          <span className="pointer-events-none absolute right-3 flex size-4 items-center justify-center" />
         }
       >
         <CheckIcon

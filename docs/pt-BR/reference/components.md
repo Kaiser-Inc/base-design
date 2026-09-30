@@ -66,7 +66,8 @@ Partes: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`,
 
 - Passe `items` (`{ value, label }[]`) para o `Select`, senão o gatilho mostra o valor cru.
 - O `SelectTrigger` tem a cara do `Input` (32px, preenchido).
-- Props do `SelectContent`: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`true`).
+- Props do `SelectContent`: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`false`).
+- A lista abre 4px abaixo do gatilho, com a largura dele, e o texto dos itens e o check alinhados com o texto e o chevron do gatilho. Entra com fade e escala a partir do gatilho em 150ms. O `alignItemWithTrigger` põe o item escolhido sobre o gatilho, como no macOS, com fade de 120ms.
 
 ### `checkbox`
 
