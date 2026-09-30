@@ -6,18 +6,18 @@ import { Spinner } from "@/components/ui/spinner"
 
 // KaiserInc Base: um tamanho de controle (32px, como no Rhea), 28px só dentro de tabela.
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-colors duration-[120ms] ease-out outline-hidden select-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:border-border disabled:bg-muted disabled:text-subtle-foreground aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-[color,background-color,border-color,outline-color,scale] duration-[160ms] ease-out outline-hidden select-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:border-border disabled:bg-muted disabled:text-subtle-foreground aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover active:not-aria-disabled:scale-[0.97]",
         outline:
-          "border-border-strong bg-transparent hover:bg-accent aria-expanded:bg-accent active:bg-border",
+          "border-border-strong bg-transparent hover:bg-accent aria-expanded:bg-accent active:bg-border active:not-aria-disabled:scale-[0.97]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-border aria-expanded:bg-border",
-        ghost: "hover:bg-accent aria-expanded:bg-accent active:bg-border",
+          "bg-secondary text-secondary-foreground hover:bg-border aria-expanded:bg-border active:not-aria-disabled:scale-[0.97]",
+        ghost: "hover:bg-accent aria-expanded:bg-accent active:bg-border active:not-aria-disabled:scale-[0.97]",
         destructive:
-          "border-border-strong bg-transparent text-destructive hover:bg-accent",
+          "border-border-strong bg-transparent text-destructive hover:bg-accent active:not-aria-disabled:scale-[0.97]",
         link: "text-primary-text underline-offset-4 hover:underline",
       },
       size: {
@@ -62,7 +62,14 @@ function Button({
     >
       {/* While loading the label turns transparent instead of disappearing, so
           the button keeps its width and its accessible name. */}
-      {loading && <Spinner className="absolute inset-0 m-auto" />}
+      {loading && (
+        <span
+          data-slot="button-spinner"
+          className="absolute inset-0 flex items-center justify-center animate-in fade-in-0 zoom-in-75 duration-150 ease-out"
+        >
+          <Spinner />
+        </span>
+      )}
       <span data-slot="button-label" className={cn("inline-flex items-center gap-[inherit]", loading && "text-transparent")}>
         {children}
       </span>
