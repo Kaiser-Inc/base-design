@@ -125,7 +125,7 @@ Partes: `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHe
 
 ### `tabs`
 
-Partes: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, mais `tabsListVariants`. `orientation` do `Tabs`: `horizontal` (padrão) ou `vertical`. As setas do teclado trocam de aba. A aba ativa tem um sublinhado de 2px em `--primary-text`; não tem pill nem fundo.
+Partes: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, mais `tabsListVariants`. `orientation` do `Tabs`: `horizontal` (padrão) ou `vertical`. As setas do teclado trocam de aba. Um único indicador de 2px em `--primary-text` desliza até a aba ativa (200ms, `ease-in-out`); não tem pill nem fundo. O painel entra com fade de 150ms.
 
 ### `page-header`
 

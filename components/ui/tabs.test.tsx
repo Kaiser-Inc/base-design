@@ -39,23 +39,40 @@ describe("Tabs", () => {
     expect(screen.getByRole("tabpanel")).toHaveTextContent("Recent activity")
   })
 
-  it("uses a border indicator instead of pills or active backgrounds", () => {
-    render(<TabsExample />)
+  it("slides one shared indicator instead of pills or per-tab underlines", () => {
+    const { container } = render(<TabsExample />)
 
     const list = screen.getByRole("tablist")
     const overview = screen.getByRole("tab", { name: "Overview" })
     const settings = screen.getByRole("tab", { name: "Settings" })
-    expect(list).toHaveClass("border-b", "border-border", "bg-transparent")
-    expect(overview).toHaveClass(
-      "h-control",
-      "text-muted-foreground",
-      "data-active:text-foreground",
-      "after:h-0.5",
-      "after:bg-primary-text"
-    )
+    expect(list).toHaveClass("relative", "border-b", "border-border", "bg-transparent")
+    expect(overview).toHaveClass("h-control", "text-muted-foreground", "data-active:text-foreground")
+    expect(overview.className).not.toMatch(/after:/)
     expect(settings).toHaveClass("disabled:text-subtle-foreground")
-    expect(overview.className).not.toMatch(
-      /rounded-full|rounded-2xl|data-active:bg-/
+    expect(overview.className).not.toMatch(/rounded-full|rounded-2xl|data-active:bg-/)
+
+    const indicator = container.querySelector('[data-slot="tabs-indicator"]')
+    expect(indicator).toBeInTheDocument()
+    expect(indicator).toHaveClass(
+      "bg-primary-text",
+      "transition-[translate,width,height]",
+      "duration-200",
+      "ease-in-out",
+      "group-data-horizontal/tabs:translate-x-(--active-tab-left)",
+      "group-data-horizontal/tabs:w-(--active-tab-width)",
+      "group-data-vertical/tabs:translate-y-(--active-tab-top)",
+      "group-data-vertical/tabs:h-(--active-tab-height)"
     )
+  })
+
+  it("renders the indicator inside the tab list", () => {
+    render(<TabsExample />)
+    const indicator = screen.getByRole("tablist").querySelector('[data-slot="tabs-indicator"]')
+    expect(indicator).toBeInTheDocument()
+  })
+
+  it("fades the panel in when it mounts", () => {
+    render(<TabsExample />)
+    expect(screen.getByRole("tabpanel")).toHaveClass("animate-in", "fade-in-0", "duration-150", "ease-out")
   })
 })

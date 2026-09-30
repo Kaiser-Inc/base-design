@@ -125,7 +125,7 @@ Parts: `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHea
 
 ### `tabs`
 
-Parts: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, plus `tabsListVariants`. `Tabs` `orientation`: `horizontal` (default) or `vertical`. Arrow keys move between tabs. The active tab has a 2px underline in `--primary-text`; there is no pill and no fill.
+Parts: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, plus `tabsListVariants`. `Tabs` `orientation`: `horizontal` (default) or `vertical`. Arrow keys move between tabs. A single 2px indicator in `--primary-text` slides to the active tab (200ms, `ease-in-out`); there is no pill and no fill. The panel fades in over 150ms.
 
 ### `page-header`
 
