@@ -48,7 +48,7 @@ describe("Checkbox", () => {
     expect(box.className).not.toMatch(/(^|\s)border-strong(\s|$)/)
   })
 
-  it("keeps the check mounted and draws its stroke in, undrawing faster", async () => {
+  it("keeps the check mounted and draws its stroke from the short arm, undrawing faster", async () => {
     const user = userEvent.setup()
     const { container } = render(<Checkbox aria-label="Include archived projects" />)
 
@@ -56,11 +56,11 @@ describe("Checkbox", () => {
     expect(indicator).toBeInTheDocument()
     expect(indicator?.querySelector("svg")).toBeInTheDocument()
     expect(indicator).toHaveClass(
-      "[&_path]:[stroke-dasharray:23]",
+      "[&_path]:[stroke-dasharray:24_40]",
       "[&_path]:transition-[stroke-dashoffset]",
       "[&_path]:duration-200",
       "[&_path]:ease-out",
-      "data-unchecked:[&_path]:[stroke-dashoffset:23]",
+      "data-unchecked:[&_path]:[stroke-dashoffset:-26]",
       "data-unchecked:[&_path]:duration-[120ms]"
     )
     expect(indicator).toHaveAttribute("data-unchecked")
