@@ -47,4 +47,15 @@ describe("Field", () => {
     )
     expect(screen.getByText("Project").className).not.toMatch(/opacity-/)
   })
+
+  it("fades the error in with a 4px drop", () => {
+    render(<FieldError>Informe um email válido.</FieldError>)
+    expect(screen.getByRole("alert")).toHaveClass(
+      "animate-in",
+      "fade-in-0",
+      "slide-in-from-top-1",
+      "duration-150",
+      "ease-out"
+    )
+  })
 })
