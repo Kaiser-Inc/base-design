@@ -36,7 +36,7 @@ import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 
 // Static preview of the focus ring for the "Foco" rows. outline-solid is
-// required: without it Tailwind v4 paints no outline at all.
+// required: the controls use outline-hidden, which zeroes the outline style.
 const forcedFocus = "outline-2 outline-solid outline-offset-2 outline-ring"
 
 // Base UI renders the item label in SelectValue only when it gets the items map.

@@ -8,13 +8,11 @@ Behaviors of the tools under KaiserInc Base that fail without an error message. 
 
 In Tailwind CSS v4, `outline-none` and `outline-hidden` both set `--tw-outline-style: none`. `focus-visible:outline-2` only sets the width and reads the style from that variable, so it paints nothing. The class list looks right and the ring never appears.
 
-Every control in the registry keeps a solid outline at rest, with zero width, a transparent color and no offset, and grows it on `focus-visible`:
+Every control in the registry pairs them:
 
 ```
-outline-0 outline-solid outline-transparent outline-offset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
+outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring
 ```
-
-Because the style never changes, the ring can transition: `outline-color`, `outline-width` and `outline-offset` are in each control's `transition` list, over 150ms. The width stays at 0 at rest so Windows high contrast mode, which paints transparent outlines, does not draw a ring on every control. Chromium rounds outline width and offset to whole pixels, so they grow in steps while the color fades smoothly.
 
 `components/ui/focus.test.tsx` checks that pairing on every control. A class check cannot see computed styles, so after changing a control, tab to it in a browser.
 

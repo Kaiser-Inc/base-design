@@ -46,8 +46,8 @@ describe("Switch", () => {
     )
     const toggle = screen.getByRole("switch", { name: "Default" })
     expect(toggle).toHaveClass(
-      "transition-[background-color,outline-color,outline-width,outline-offset]",
-      "[transition-duration:250ms,150ms,150ms,150ms]",
+      "transition-[background-color,border-color]",
+      "duration-250",
       "data-[size=default]:[--switch-inner:28px]",
       "data-[size=default]:[--switch-thumb-pressed:20px]",
       "data-[size=sm]:[--switch-inner:20px]",

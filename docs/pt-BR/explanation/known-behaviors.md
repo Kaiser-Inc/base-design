@@ -8,13 +8,11 @@ Comportamentos das ferramentas por baixo do KaiserInc Base que falham sem mensag
 
 No Tailwind CSS v4, `outline-none` e `outline-hidden` definem os dois `--tw-outline-style: none`. O `focus-visible:outline-2` só define a largura e lê o estilo dessa variável, então não pinta nada. A lista de classes parece certa, e o anel nunca aparece.
 
-Todo controle da registry mantém em repouso um contorno sólido, com largura 0, cor transparente e sem offset, e faz ele crescer no `focus-visible`:
+Todo controle da registry junta as classes assim:
 
 ```
-outline-0 outline-solid outline-transparent outline-offset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
+outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring
 ```
-
-Como o estilo nunca muda, o anel pode ter transição: `outline-color`, `outline-width` e `outline-offset` estão na lista de `transition` de cada controle, em 150ms. A largura fica em 0 em repouso para que o modo de alto contraste do Windows, que pinta contornos transparentes, não desenhe um anel em todo controle. O Chromium arredonda largura e offset do contorno para pixels inteiros, então eles crescem em degraus enquanto a cor faz um fade contínuo.
 
 O `components/ui/focus.test.tsx` confere essa combinação em todos os controles. Um teste de classe não enxerga o estilo calculado, então, depois de mexer num controle, chegue nele com Tab no navegador.
 

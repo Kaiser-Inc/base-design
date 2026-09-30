@@ -67,7 +67,7 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "relative inline-flex h-control flex-1 items-center justify-center gap-1.5 px-3 text-sm font-medium whitespace-nowrap text-muted-foreground transition-[color,background-color,border-color,outline-color,outline-width,outline-offset] duration-150 ease-out outline-0 outline-solid outline-transparent outline-offset-0 group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:text-subtle-foreground aria-disabled:pointer-events-none aria-disabled:text-subtle-foreground data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative inline-flex h-control flex-1 items-center justify-center gap-1.5 px-3 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors duration-[120ms] ease-out outline-hidden group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:text-subtle-foreground aria-disabled:pointer-events-none aria-disabled:text-subtle-foreground data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

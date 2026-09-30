@@ -48,7 +48,7 @@ function SiteHeader() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "rounded-md px-2.5 py-1.5 text-sm whitespace-nowrap text-muted-foreground outline-0 outline-solid outline-transparent outline-offset-0 transition-[color,outline-color,outline-width,outline-offset] duration-150 ease-out hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                  "rounded-md px-2.5 py-1.5 text-sm whitespace-nowrap text-muted-foreground transition-colors duration-[120ms] ease-out hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
                   active && "font-medium text-foreground underline decoration-primary-text decoration-2 underline-offset-[18px]"
                 )}
               >
