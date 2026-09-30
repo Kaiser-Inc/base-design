@@ -99,7 +99,7 @@ While the promise from `onConfirm` is pending, the confirm button shows loading 
 
 The primitives under `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`, `AlertDialogMedia`, `AlertDialogOverlay`, `AlertDialogPortal`.
 
-`AlertDialogContent` `size`: `default` (720px wide) or `sm` (480px). Below 640px it becomes a bottom sheet. The overlay is `--background` at 70%, with no blur.
+`AlertDialogContent` `size`: `default` (720px wide) or `sm` (480px). Below 640px it becomes a bottom sheet. The overlay is `--background` at 70%, with no blur. On desktop it fades and scales in from 0.96 over 200ms and leaves in 150ms. As a bottom sheet it slides up over 300ms with `ease-drawer` and leaves in 200ms. Both use transitions, so closing mid-animation reverses from the current frame.
 
 ### `sonner`
 

@@ -99,7 +99,7 @@ Enquanto a promessa do `onConfirm` está pendente, o botão de confirmar mostra 
 
 As peças por trás do `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`, `AlertDialogMedia`, `AlertDialogOverlay`, `AlertDialogPortal`.
 
-`size` do `AlertDialogContent`: `default` (720px de largura) ou `sm` (480px). Abaixo de 640px ele vira uma folha que sobe da base. O fundo atrás dele é o `--background` a 70%, sem blur.
+`size` do `AlertDialogContent`: `default` (720px de largura) ou `sm` (480px). Abaixo de 640px ele vira uma folha que sobe da base. O fundo atrás dele é o `--background` a 70%, sem blur. No desktop, entra com fade e escala a partir de 0,96 em 200ms e sai em 150ms. Como folha, sobe em 300ms com `ease-drawer` e sai em 200ms. As duas formas usam transição, então fechar no meio da animação volta do quadro atual.
 
 ### `sonner`
 
