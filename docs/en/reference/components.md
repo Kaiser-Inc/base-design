@@ -66,7 +66,8 @@ Parts: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, 
 
 - Pass `items` (`{ value, label }[]`) to `Select`, or the trigger shows the raw value.
 - `SelectTrigger` looks like `Input` (32px, filled).
-- `SelectContent` props: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`true`).
+- `SelectContent` props: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`false`).
+- The list opens 4px below the trigger, at the trigger's width, with item text and the check lined up with the trigger's text and chevron. It fades and scales from the trigger over 150ms. `alignItemWithTrigger` places the selected item over the trigger instead, macOS style, with a 120ms fade.
 
 ### `checkbox`
 
@@ -74,7 +75,7 @@ Parts: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, 
 
 ### `switch`
 
-`Switch` on Base UI. `size`: `default` (20×32px) or `sm` (16×24px). Off in `--input`, on in `--primary`.
+`Switch` on Base UI. `size`: `default` (20×32px) or `sm` (16×24px). Off in `--input`, on in `--primary`. The thumb slides over 250ms with `ease-drawer` and the track color follows over 250ms. Pressing widens the thumb toward the center, as on iOS; a disabled switch and reduced motion skip the widening.
 
 ## Feedback
 
@@ -99,7 +100,13 @@ While the promise from `onConfirm` is pending, the confirm button shows loading 
 
 The primitives under `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`, `AlertDialogMedia`, `AlertDialogOverlay`, `AlertDialogPortal`.
 
-`AlertDialogContent` `size`: `default` (720px wide) or `sm` (480px). Below 640px it becomes a bottom sheet. The overlay is `--background` at 70%, with no blur.
+`AlertDialogContent` `size`: `default` (720px wide) or `sm` (480px). Below 640px it becomes a bottom sheet. The overlay is `--background` at 70%, with no blur. On desktop it fades and scales in from 0.96 over 200ms and leaves in 150ms. As a bottom sheet it slides up over 300ms with `ease-drawer` and leaves in 200ms. Both use transitions, so closing mid-animation reverses from the current frame.
+
+### `sheet`
+
+Parts: `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, `SheetClose`. Built on the Base UI Drawer.
+
+`Sheet` `side`: `right` (default, 400px wide, at most the viewport minus 3rem) or `bottom` (up to 80vh, with a drag handle). It closes by swiping toward its edge, a quick flick is enough; by Escape; by clicking the overlay; and by the X button, labeled "Fechar" (`closeLabel` changes it, `showCloseButton={false}` hides it). It slides in over 300ms with `ease-drawer`, and its exit follows the swipe speed. Form fields in a bottom sheet stay above the software keyboard. Registry deps: `base`, `button`.
 
 ### `sonner`
 
@@ -125,7 +132,7 @@ Parts: `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHea
 
 ### `tabs`
 
-Parts: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, plus `tabsListVariants`. `Tabs` `orientation`: `horizontal` (default) or `vertical`. Arrow keys move between tabs. The active tab has a 2px underline in `--primary-text`; there is no pill and no fill.
+Parts: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, plus `tabsListVariants`. `Tabs` `orientation`: `horizontal` (default) or `vertical`. Arrow keys move between tabs. A single 2px indicator in `--primary-text` slides to the active tab (200ms, `ease-in-out`); there is no pill and no fill. The panel fades in over 150ms.
 
 ### `page-header`
 

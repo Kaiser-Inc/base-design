@@ -59,6 +59,73 @@ describe("Select", () => {
     expect(trigger.className).not.toMatch(/opacity-|shadow-/)
     expect(trigger.querySelector("svg")).toHaveAttribute("stroke-width", "1.75")
   })
+
+  it("fades when aligned to the trigger and scales from the trigger otherwise", async () => {
+    const user = userEvent.setup()
+    render(
+      <Select items={[{ value: "active", label: "Ativo" }]} defaultValue="active">
+        <SelectTrigger aria-label="Status">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    await user.click(screen.getByRole("combobox", { name: "Status" }))
+    const popup = document.querySelector('[data-slot="select-content"]')!
+
+    expect(popup.className).not.toMatch(/animate-in|animate-out|animate-none|fade-in-0/)
+    expect(popup).toHaveClass(
+      "origin-(--transform-origin)",
+      "transition-[opacity,scale]",
+      "duration-150",
+      "ease-out",
+      "data-starting-style:opacity-0",
+      "data-ending-style:opacity-0",
+      "data-starting-style:scale-96",
+      "data-ending-style:scale-96",
+      "data-[side=none]:duration-[120ms]",
+      "data-[side=none]:data-starting-style:scale-100",
+      "data-[side=none]:data-ending-style:scale-100"
+    )
+  })
+
+  it("opens below the trigger by default instead of over it", async () => {
+    const user = userEvent.setup()
+    render(
+      <Select items={[{ value: "active", label: "Ativo" }]} defaultValue="active">
+        <SelectTrigger aria-label="Status">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    await user.click(screen.getByRole("combobox", { name: "Status" }))
+    const popup = document.querySelector('[data-slot="select-content"]')!
+    expect(popup).toHaveAttribute("data-align-trigger", "false")
+  })
+
+  it("lines item text and the check up with the trigger's text and chevron", async () => {
+    const user = userEvent.setup()
+    render(
+      <Select items={[{ value: "active", label: "Ativo" }]} defaultValue="active">
+        <SelectTrigger aria-label="Status">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="active">Ativo</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    expect(screen.getByRole("combobox", { name: "Status" })).toHaveClass("px-3")
+    await user.click(screen.getByRole("combobox", { name: "Status" }))
+    const item = await screen.findByRole("option", { name: "Ativo" })
+    expect(item).toHaveClass("pl-3", "pr-9")
+    expect(item.querySelector("span.absolute")).toHaveClass("right-3")
+  })
 })
 
 describe("Select value label", () => {

@@ -36,4 +36,30 @@ describe("Switch", () => {
     expect(thumb).toHaveClass("rounded-full", "bg-background")
     expect(thumb?.className).not.toMatch(/shadow-/)
   })
+
+  it("slides the thumb over 250ms with the drawer curve and widens it on press", () => {
+    render(
+      <>
+        <Switch aria-label="Default" />
+        <Switch aria-label="Small" size="sm" />
+      </>
+    )
+    const toggle = screen.getByRole("switch", { name: "Default" })
+    expect(toggle).toHaveClass(
+      "transition-[background-color,border-color]",
+      "duration-250",
+      "data-[size=default]:[--switch-inner:28px]",
+      "data-[size=default]:[--switch-thumb-pressed:20px]",
+      "data-[size=sm]:[--switch-inner:20px]",
+      "data-[size=sm]:[--switch-thumb-pressed:15px]"
+    )
+    const thumb = toggle.querySelector('[data-slot="switch-thumb"]')
+    expect(thumb).toHaveClass(
+      "transition-[translate,width]",
+      "duration-250",
+      "ease-drawer",
+      "data-checked:translate-x-[calc(var(--switch-inner)-100%)]",
+      "motion-safe:group-[:active:not([data-disabled])]/switch:w-(--switch-thumb-pressed)"
+    )
+  })
 })

@@ -212,7 +212,10 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-xs font-normal text-destructive", className)}
+      className={cn(
+        "text-xs font-normal text-destructive animate-in fade-in-0 slide-in-from-top-1 duration-150 ease-out",
+        className
+      )}
       {...props}
     >
       {content}

@@ -22,6 +22,16 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -35,6 +45,34 @@ const statusItems = [
   { value: "paused", label: "Pausado" },
   { value: "archived", label: "Arquivado" },
 ]
+
+function ProjectSheet({ side, label }: { side: "right" | "bottom"; label: string }) {
+  return (
+    <Sheet side={side}>
+      <SheetTrigger render={<Button variant="outline" />}>{label}</SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Editar projeto</SheetTitle>
+          <SheetDescription>As mudanças valem para todo o time.</SheetDescription>
+        </SheetHeader>
+        <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor={`sheet-${side}-name`}>Nome do projeto</FieldLabel>
+            <Input id={`sheet-${side}-name`} defaultValue="Levelify" />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor={`sheet-${side}-notes`}>Descrição</FieldLabel>
+            <Textarea id={`sheet-${side}-notes`} defaultValue="App de hábitos com progressão." />
+          </Field>
+        </FieldGroup>
+        <SheetFooter>
+          <SheetClose render={<Button variant="outline" />}>Cancelar</SheetClose>
+          <SheetClose render={<Button />}>Salvar</SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  )
+}
 
 function FormDemos() {
   return (
@@ -459,6 +497,38 @@ function FormDemos() {
               Sincronização automática
             </FieldLabel>
           </Field>
+        </ShowcaseRow>
+      </Showcase>
+
+      <Showcase
+        id="sheet"
+        title="Sheet"
+        description="Painel para editar sem sair da página. Fecha com arraste, Esc, clique fora ou no X."
+        code={`<Sheet side="right">
+  <SheetTrigger render={<Button variant="outline" />}>Editar</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Editar projeto</SheetTitle>
+      <SheetDescription>As mudanças valem para todo o time.</SheetDescription>
+    </SheetHeader>
+    {/* campos */}
+    <SheetFooter>
+      <SheetClose render={<Button variant="outline" />}>Cancelar</SheetClose>
+      <SheetClose render={<Button />}>Salvar</SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+
+// No celular: sobe da borda de baixo, com alça de arraste.
+<Sheet side="bottom">
+  <SheetTrigger render={<Button variant="outline" />}>Editar</SheetTrigger>
+  <SheetContent>{/* mesmo conteúdo */}</SheetContent>
+</Sheet>`}
+        registryName="sheet"
+      >
+        <ShowcaseRow label="Lateral e inferior">
+          <ProjectSheet side="right" label="Editar na lateral" />
+          <ProjectSheet side="bottom" label="Editar embaixo" />
         </ShowcaseRow>
       </Showcase>
     </>

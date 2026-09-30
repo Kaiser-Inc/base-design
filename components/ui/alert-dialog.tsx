@@ -30,7 +30,7 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Backdrop
       data-slot="alert-dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-background/70 duration-[120ms] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-background/70 transition-opacity duration-200 ease-out data-starting-style:opacity-0 data-ending-style:opacity-0 data-ending-style:duration-150",
         className
       )}
       {...props}
@@ -53,7 +53,7 @@ function AlertDialogContent({
         data-size={size}
         className={cn(
           // Bottom sheet below 640px, centered 720px dialog above (480px for size="sm").
-          "group/alert-dialog-content fixed inset-x-0 bottom-0 z-50 grid w-full gap-6 rounded-t-lg border-t border-border bg-popover p-6 text-popover-foreground shadow-[var(--shadow-overlay)] duration-[120ms] outline-hidden sm:inset-x-auto sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-lg sm:border-t-0 dark:border dark:border-border data-[size=default]:sm:max-w-[720px] data-[size=sm]:sm:max-w-[480px] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+          "group/alert-dialog-content fixed inset-x-0 bottom-0 z-50 grid w-full gap-6 rounded-t-lg border-t border-border bg-popover p-6 text-popover-foreground shadow-[var(--shadow-overlay)] outline-hidden transition-[transform,scale,opacity] duration-300 ease-drawer data-starting-style:[transform:translateY(100%)] data-ending-style:[transform:translateY(100%)] data-ending-style:duration-200 sm:inset-x-auto sm:top-1/2 sm:bottom-auto sm:left-1/2 sm:w-[calc(100%-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-lg sm:border-t-0 sm:duration-200 sm:ease-out sm:data-starting-style:[transform:none] sm:data-ending-style:[transform:none] sm:data-starting-style:scale-96 sm:data-ending-style:scale-96 data-starting-style:opacity-0 data-ending-style:opacity-0 sm:data-ending-style:duration-150 dark:border dark:border-border data-[size=default]:sm:max-w-[720px] data-[size=sm]:sm:max-w-[480px]",
           className
         )}
         {...props}

@@ -78,4 +78,31 @@ describe("ConfirmDialog", () => {
     expect(dialog.className).toMatch(/max-w-\[720px\]/)
     expect(document.body.innerHTML).not.toMatch(/backdrop-blur|bg-black/)
   })
+
+  it("animates with interruptible transitions instead of keyframes", async () => {
+    const { user } = setup()
+    await user.click(screen.getByRole("button", { name: "Excluir projeto" }))
+    const dialog = await screen.findByRole("alertdialog")
+    const overlay = document.querySelector('[data-slot="alert-dialog-overlay"]')!
+
+    for (const el of [dialog, overlay]) {
+      expect(el.className).not.toMatch(/animate-in|animate-out|fade-in-0|fade-out-0/)
+      expect(el).toHaveClass("data-starting-style:opacity-0", "data-ending-style:opacity-0")
+    }
+    // Mobile: slides up from the bottom edge with the drawer curve.
+    expect(dialog).toHaveClass(
+      "data-starting-style:[transform:translateY(100%)]",
+      "duration-300",
+      "ease-drawer",
+      "data-ending-style:duration-200"
+    )
+    // Desktop: fades and scales from 0.96, exits faster.
+    expect(dialog).toHaveClass(
+      "sm:data-starting-style:[transform:none]",
+      "sm:data-starting-style:scale-96",
+      "sm:duration-200",
+      "sm:ease-out",
+      "sm:data-ending-style:duration-150"
+    )
+  })
 })

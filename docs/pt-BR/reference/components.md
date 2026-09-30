@@ -66,7 +66,8 @@ Partes: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`,
 
 - Passe `items` (`{ value, label }[]`) para o `Select`, senão o gatilho mostra o valor cru.
 - O `SelectTrigger` tem a cara do `Input` (32px, preenchido).
-- Props do `SelectContent`: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`true`).
+- Props do `SelectContent`: `side` (`"bottom"`), `sideOffset` (`4`), `align` (`"center"`), `alignOffset` (`0`), `alignItemWithTrigger` (`false`).
+- A lista abre 4px abaixo do gatilho, com a largura dele, e o texto dos itens e o check alinhados com o texto e o chevron do gatilho. Entra com fade e escala a partir do gatilho em 150ms. O `alignItemWithTrigger` põe o item escolhido sobre o gatilho, como no macOS, com fade de 120ms.
 
 ### `checkbox`
 
@@ -74,7 +75,7 @@ Partes: `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`,
 
 ### `switch`
 
-`Switch` sobre o Base UI. `size`: `default` (20×32px) ou `sm` (16×24px). Desligado em `--input`, ligado em `--primary`.
+`Switch` sobre o Base UI. `size`: `default` (20×32px) ou `sm` (16×24px). Desligado em `--input`, ligado em `--primary`. O thumb desliza em 250ms com `ease-drawer`, e a cor do trilho acompanha em 250ms. Ao pressionar, o thumb se alarga em direção ao centro, como no iOS; o Switch desabilitado e o reduced motion não alargam.
 
 ## Feedback
 
@@ -99,7 +100,13 @@ Enquanto a promessa do `onConfirm` está pendente, o botão de confirmar mostra 
 
 As peças por trás do `ConfirmDialog`: `AlertDialog`, `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogFooter`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogAction`, `AlertDialogCancel`, `AlertDialogMedia`, `AlertDialogOverlay`, `AlertDialogPortal`.
 
-`size` do `AlertDialogContent`: `default` (720px de largura) ou `sm` (480px). Abaixo de 640px ele vira uma folha que sobe da base. O fundo atrás dele é o `--background` a 70%, sem blur.
+`size` do `AlertDialogContent`: `default` (720px de largura) ou `sm` (480px). Abaixo de 640px ele vira uma folha que sobe da base. O fundo atrás dele é o `--background` a 70%, sem blur. No desktop, entra com fade e escala a partir de 0,96 em 200ms e sai em 150ms. Como folha, sobe em 300ms com `ease-drawer` e sai em 200ms. As duas formas usam transição, então fechar no meio da animação volta do quadro atual.
+
+### `sheet`
+
+Partes: `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetFooter`, `SheetTitle`, `SheetDescription`, `SheetClose`. Construído sobre o Drawer do Base UI.
+
+`side` do `Sheet`: `right` (padrão, 400px de largura, no máximo a tela menos 3rem) ou `bottom` (até 80vh, com alça de arraste). Fecha com um arraste em direção à borda, e um gesto rápido basta; com Esc; com clique fora; e pelo botão X, com o rótulo "Fechar" (`closeLabel` troca o texto, `showCloseButton={false}` esconde). Entra em 300ms com `ease-drawer`, e a saída acompanha a velocidade do gesto. Campos de formulário num bottom sheet ficam acima do teclado virtual. Dependências na registry: `base`, `button`.
 
 ### `sonner`
 
@@ -125,7 +132,7 @@ Partes: `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHe
 
 ### `tabs`
 
-Partes: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, mais `tabsListVariants`. `orientation` do `Tabs`: `horizontal` (padrão) ou `vertical`. As setas do teclado trocam de aba. A aba ativa tem um sublinhado de 2px em `--primary-text`; não tem pill nem fundo.
+Partes: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`, mais `tabsListVariants`. `orientation` do `Tabs`: `horizontal` (padrão) ou `vertical`. As setas do teclado trocam de aba. Um único indicador de 2px em `--primary-text` desliza até a aba ativa (200ms, `ease-in-out`); não tem pill nem fundo. O painel entra com fade de 150ms.
 
 ### `page-header`
 

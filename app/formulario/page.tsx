@@ -16,12 +16,13 @@ const sections = [
   { id: "select", title: "Select" },
   { id: "checkbox", title: "Checkbox" },
   { id: "switch", title: "Switch" },
+  { id: "sheet", title: "Sheet" },
 ]
 
 export default function Page() {
   return (
     <>
-      <PageHeader title="Formulário" description="Button, Field, Input, Textarea, Select, Checkbox e Switch em todos os estados." />
+      <PageHeader title="Formulário" description="Button, Field, Input, Textarea, Select, Checkbox, Switch e Sheet em todos os estados." />
       <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[minmax(0,1fr)_12rem] lg:items-start lg:gap-16">
         <div className="flex min-w-0 flex-col gap-12">
           <FormDemos />

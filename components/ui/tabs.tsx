@@ -23,7 +23,7 @@ function Tabs({
 }
 
 const tabsListVariants = cva(
-  "group/tabs-list inline-flex w-fit items-center justify-center border-b border-border bg-transparent text-muted-foreground group-data-horizontal/tabs:h-control group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col",
+  "group/tabs-list relative inline-flex w-fit items-center justify-center border-b border-border bg-transparent text-muted-foreground group-data-horizontal/tabs:h-control group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col",
   {
     variants: {
       variant: {
@@ -41,6 +41,7 @@ function TabsList({
   className,
   variant = "default",
   activateOnFocus = true,
+  children,
   ...props
 }: TabsPrimitive.List.Props & VariantProps<typeof tabsListVariants>) {
   return (
@@ -50,7 +51,14 @@ function TabsList({
       className={cn(tabsListVariants({ variant }), className)}
       activateOnFocus={activateOnFocus}
       {...props}
-    />
+    >
+      {children}
+      <TabsPrimitive.Indicator
+        data-slot="tabs-indicator"
+        renderBeforeHydration
+        className="pointer-events-none absolute top-0 left-0 bg-primary-text transition-[translate,width,height] duration-200 ease-in-out group-data-horizontal/tabs:top-auto group-data-horizontal/tabs:-bottom-px group-data-horizontal/tabs:h-0.5 group-data-horizontal/tabs:w-(--active-tab-width) group-data-horizontal/tabs:translate-x-(--active-tab-left) group-data-vertical/tabs:w-0.5 group-data-vertical/tabs:h-(--active-tab-height) group-data-vertical/tabs:translate-y-(--active-tab-top)"
+      />
+    </TabsPrimitive.List>
   )
 }
 
@@ -60,7 +68,6 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
       data-slot="tabs-trigger"
       className={cn(
         "relative inline-flex h-control flex-1 items-center justify-center gap-1.5 px-3 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors duration-[120ms] ease-out outline-hidden group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:text-subtle-foreground aria-disabled:pointer-events-none aria-disabled:text-subtle-foreground data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        "after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-primary-text after:opacity-0 after:transition-opacity after:duration-[120ms] after:ease-out data-active:after:opacity-100",
         className
       )}
       {...props}
@@ -72,7 +79,7 @@ function TabsContent({ className, ...props }: TabsPrimitive.Panel.Props) {
   return (
     <TabsPrimitive.Panel
       data-slot="tabs-content"
-      className={cn("flex-1 text-sm outline-hidden", className)}
+      className={cn("flex-1 text-sm outline-hidden animate-in fade-in-0 duration-150 ease-out", className)}
       {...props}
     />
   )
