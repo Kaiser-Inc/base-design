@@ -85,9 +85,8 @@ function SelectContent({
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
-          data-align-trigger={alignItemWithTrigger}
           className={cn(
-            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-[var(--shadow-overlay)] duration-[120ms] ease-out data-[align-trigger=true]:animate-none dark:border dark:border-border dark:shadow-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-[var(--shadow-overlay)] transition-[opacity,scale] duration-150 ease-out data-starting-style:opacity-0 data-ending-style:opacity-0 data-starting-style:scale-96 data-ending-style:scale-96 data-[side=none]:duration-[120ms] data-[side=none]:data-starting-style:scale-100 data-[side=none]:data-ending-style:scale-100 dark:border dark:border-border dark:shadow-none",
             className
           )}
           {...props}
