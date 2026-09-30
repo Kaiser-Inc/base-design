@@ -51,4 +51,19 @@ describe("reduced motion", () => {
     const rule = base.css?.["@media (prefers-reduced-motion: reduce)"] as Record<string, Record<string, string>>
     expect(rule["*, *::before, *::after"]).toEqual(reducedMotion)
   })
+
+  it("keeps Base UI popups from jumping in scale or position while they fade", () => {
+    const popupRule = {
+      "--tw-scale-x": "100% !important",
+      "--tw-scale-y": "100% !important",
+      "--tw-scale-z": "100% !important",
+      transform: "none !important",
+    }
+    const block = css.slice(css.indexOf("[data-starting-style], [data-ending-style] {"))
+    for (const [property, value] of Object.entries(popupRule)) {
+      expect(block).toContain(`${property}: ${value};`)
+    }
+    const rule = base.css?.["@media (prefers-reduced-motion: reduce)"] as Record<string, Record<string, string>>
+    expect(rule["[data-starting-style], [data-ending-style]"]).toEqual(popupRule)
+  })
 })

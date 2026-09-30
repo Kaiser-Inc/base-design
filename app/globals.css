@@ -169,5 +169,13 @@
       --tw-exit-translate-x: 0 !important;
       --tw-exit-translate-y: 0 !important;
     }
+    /* Base UI popups start and end at a scaled or offset frame; without a
+       transform transition they would jump there, so they only fade. */
+    [data-starting-style], [data-ending-style] {
+      --tw-scale-x: 100% !important;
+      --tw-scale-y: 100% !important;
+      --tw-scale-z: 100% !important;
+      transform: none !important;
+    }
   }
 }
